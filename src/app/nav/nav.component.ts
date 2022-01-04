@@ -1,5 +1,5 @@
-import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {animate, keyframes, state, style, transition, trigger} from "@angular/animations";
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 export enum AnimationState {
   TRANSPARENT = "transparent",
@@ -12,31 +12,6 @@ export enum AnimationState {
   styleUrls: ['./nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
-    trigger("navAnimation", [
-      state(AnimationState.TRANSPARENT, style({
-        backgroundColor: "transparent"
-      })),
-      state(AnimationState.BLACK, style({
-        backgroundColor: "black",
-        // FIXME
-        // opacity: "0.7",
-        // "backdrop-filter": "blur(10px)"
-      })),
-      transition(`${AnimationState.TRANSPARENT} => ${AnimationState.BLACK}`, [
-        animate("200ms ease-in", keyframes([90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5].map(n => style({
-            backgroundColor: "transparent",
-            backgroundImage: `linear-gradient(0deg, transparent ${n}%, black)`,
-          })
-        )))
-      ]),
-      transition(`${AnimationState.BLACK} => ${AnimationState.TRANSPARENT}`, [
-        animate("200ms ease-out", keyframes([90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5].map(n => style({
-            backgroundColor: "transparent",
-            backgroundImage: `linear-gradient(180deg, black ${n}%, transparent)`,
-          }))
-        ))
-      ])
-    ]),
     trigger("menuAnimation", [
       state("open", style({
         height: "100%",
@@ -56,12 +31,18 @@ export enum AnimationState {
     ])
   ]
 })
-export class NavComponent implements OnInit, AfterViewInit {
+export class NavComponent implements OnInit {
   /**
    * Indicates light or dark mode
    * It is a class for the icon shown in the nav
    */
-  public nextMode: mode = 'dark_mode';
+  public nextColorModeIcon: 'light_mode' | 'dark_mode' = 'dark_mode';
+
+  /**
+   * Indicates if the menu for small devices is open or closed
+   * It is a class for the icon shown in the nav
+   */
+  public nextMenuStateIcon: 'menu' | 'close' = 'menu';
 
   /**
    * Holds the name of the current state of the nav animation
@@ -78,53 +59,19 @@ export class NavComponent implements OnInit, AfterViewInit {
    */
   public isNavShown: boolean = false;
 
-  private readonly navHeight: number = 56;
-  private top2DownThresh: number = 0;
-  private down2TopThresh: number = 0;
-
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.toggleDarkMode();
   }
 
-  ngAfterViewInit(): void {
-    // the thresh for changing from one state to another is preferred not to be the same
-    // as it can produce buggy behaviour (specially if the user scrolls up and down repeatedly)
-    this.top2DownThresh = this.navHeight + Math.round(this.navHeight / 2);
-    this.down2TopThresh = this.navHeight;
-
-    window.onscroll = () => this.checkScrollAnimation();
-
-    // if this is not added and the state changes, angular will complain
-    setInterval(() => this.checkScrollAnimation(), 100);
-  }
-
-  /**
-   * Triggers the nav animation if needed
-   * The animation state will depend on the scrolled amount and the page
-   */
-  private checkScrollAnimation(): void {
-    const top = document.documentElement.scrollTop || document.body.scrollTop;
-
-    if (this.navAnimationState !== AnimationState.BLACK && top > this.top2DownThresh) {
-      this.navAnimationState = AnimationState.BLACK;
-      // this.showGo2Top = true;
-      this.changeDetectorRef.markForCheck();
-    } else if (this.navAnimationState !== AnimationState.TRANSPARENT && top < this.down2TopThresh) {
-      this.navAnimationState = AnimationState.TRANSPARENT;
-      // this.showGo2Top = false;
-      this.changeDetectorRef.markForCheck();
-    }
-  }
-
   public toggleDarkMode(): void {
-    if (this.nextMode === 'dark_mode') {
+    if (this.nextColorModeIcon === 'dark_mode') {
       localStorage.theme = 'dark';
-      this.nextMode = 'light_mode';
+      this.nextColorModeIcon = 'light_mode';
     } else {
       localStorage.theme = 'light';
-      this.nextMode = 'dark_mode';
+      this.nextColorModeIcon = 'dark_mode';
     }
 
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
@@ -134,10 +81,16 @@ export class NavComponent implements OnInit, AfterViewInit {
   }
 
   public toggleNav() {
-    this.isNavShown = !this.isNavShown;
-    this.menuAnimationState = this.menuAnimationState === 'closed' ? 'open' : 'closed';
+    if (this.isNavShown) {
+      this.isNavShown = false;
+      this.menuAnimationState = 'closed';
+      this.nextMenuStateIcon = 'menu';
+    } else {
+      this.isNavShown = true;
+      this.menuAnimationState = 'open';
+      this.nextMenuStateIcon = 'close';
+    }
+
     this.changeDetectorRef.markForCheck();
   }
 }
-
-type mode = 'light_mode' | 'dark_mode';
