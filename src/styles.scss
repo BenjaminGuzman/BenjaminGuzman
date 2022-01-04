@@ -3,5 +3,18 @@
 @tailwind utilities;
 
 html, body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source Code Pro', sans-serif;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  /* If the browser doesn't support blur, change the opacity */
+  .bg-opacity-95-no-blur {
+    --tw-bg-opacity: 0.95 !important;
+  }
+  .bg-opacity-90-no-blur {
+    --tw-bg-opacity: 0.95 !important;
+  }
+  .bg-opacity-50-no-blur {
+    --tw-bg-opacity: 0.50 !important;
+  }
 }
