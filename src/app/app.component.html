@@ -1,7 +1,15 @@
-<div class="flex flex-col w-full h-full justify-between">
+<div class="w-full h-full">
   <app-nav></app-nav>
 
-  <router-outlet></router-outlet>
+  <!-- Landing image -->
+  <div id="presentation-img" class="relative w-full h-screen bg-center bg-cover bg-fixed">
+    <div class="absolute w-full h-full bg-black bg-opacity-70"></div>
+    <div class="absolute flex items-center top-0 bottom-0 left-4 md:left-6 xl:left-8 w-72 md:w-80 xl:w-96 lg:text-lg">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus esse iste laudantium pariatur provident rerum veniam! Aliquid at dolore dolorum eius, laudantium recusandae repudiandae tempore temporibus vel veniam voluptate, voluptates!</p>
+    </div>
+  </div>
+
+  <app-portfolio></app-portfolio>
 
   <app-footer></app-footer>
 </div>
