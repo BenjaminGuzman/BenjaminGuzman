@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~swiper/scss";
+@import "~swiper/scss/navigation";
+
+:root {
+  --swiper-theme-color: rgb(210, 210, 210);
+  --swiper-navigation-size: 22px;
+}
 
 html, body {
   font-family: 'Source Code Pro', sans-serif;
@@ -12,6 +19,18 @@ html, body {
 
 .glass {
   @apply backdrop-blur-sm dark:backdrop-blur bg-opacity-80 dark:bg-opacity-10 bg-gray-50 dark:bg-black text-color;
+}
+
+.profile-pic {
+  @apply border-gray-400 border-2;
+}
+
+.max-w-10 {
+  max-width: 3rem;
+}
+
+.max-h-10 {
+  max-height: 3rem;
 }
 
 @supports not (backdrop-filter: blur(1px)) {

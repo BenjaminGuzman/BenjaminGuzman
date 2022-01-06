@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {SwiperModule} from 'swiper/angular';
+import SwiperCore, {Navigation} from 'swiper';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -9,6 +11,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {ProjectComponent} from './portfolio/project/project.component';
 
+SwiperCore.use([Navigation]);
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,8 @@ import {ProjectComponent} from './portfolio/project/project.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
