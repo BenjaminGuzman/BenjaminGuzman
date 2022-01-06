@@ -1,11 +1,43 @@
-<div class="relative w-full h-72 bg-blue-900">
-  <!-- Set of images -->
-  <div class="absolute w-full bottom-0 text-center py-1 font-medium glass">
+<!-- Technology stack -->
+<div class="flex flex-wrap items-center justify-center gap-2 my-1">
+  <a *ngFor="let tech of techStack" href="{{tech.url}}" target="_blank">
+    <img src="{{tech.imgUrl}}"
+         alt="{{tech.name}}"
+         title="{{tech.name}}"
+         class="rounded-full max-w-12 max-h-12">
+  </a>
+</div>
+
+<!-- Image slideshow -->
+<!-- onclick: compress the image rotate3d(0, 1, 0, 0deg) -> rotate3d(0, 1, 0, 90deg), expand the info rotate3d(0, 1, 0, 90deg) -> rotate3d(0, 1, 0, 0deg) -->
+<div class="relative w-full h-72 rounded-t-xl project">
+  <swiper class="w-full h-full" [navigation]="true">
+    <ng-template swiperSlide *ngFor="let imgUrl of imagesUrls">
+      <div class="w-full h-full bg-cover bg-center rounded-t-xl" style="background-image: url('{{imgUrl}}')"></div>
+    </ng-template>
+  </swiper>
+
+  <!-- TODO expand this overlay on hover to show everything (description and tags) -->
+  <div class="absolute w-full bottom-0 text-center py-1 font-medium glass z-10">
     <p>Name</p>
   </div>
-  <!-- Name with background transparent (blurry) -->
 </div>
-<!-- technology stack -->
+
 <!-- tags -->
 <!-- description -->
+
 <!-- links -->
+<div class="flex flex-wrap items-center justify-center gap-2 my-1">
+  <a *ngFor="let link of links" href="{{link.url}}" target="_blank">
+    <img *ngIf="link.imgUrl" src="{{link.imgUrl}}"
+         alt="{{link.name}}"
+         title="{{link.name}}"
+         class="rounded-full max-w-12 max-h-12">
+    <span *ngIf="!link.imgUrl && link.icon"
+          title="{{link.name}}"
+          class="material-icons material-icons-outlined text-color">
+      {{link.icon}}
+    </span>
+    <span *ngIf="!link.imgUrl && !link.icon" title="{{link.name}}" class="text-blue-600 underline">{{link.name}}</span>
+  </a>
+</div>
