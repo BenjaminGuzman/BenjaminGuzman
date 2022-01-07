@@ -1,54 +1,81 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild
+} from '@angular/core';
+import {Project} from "./Project";
+import {animate, AnimationEvent, keyframes, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger("descAnimation", [
+      state("open", style({
+        height: "*",
+        display: "flex"
+      })),
+      state("closed", style({
+        height: "0",
+        opacity: "0",
+        display: "none"
+      })),
+      transition("open => closed", [
+        animate("600ms ease-in", keyframes([
+          style({
+            height: "*",
+            opacity: "1",
+            display: "flex",
+            pointerEvents: "none"
+          }),
+          style({
+            height: "*",
+            opacity: "0",
+            display: "flex"
+          }),
+          style({
+            height: "0",
+            opacity: "0",
+            display: "none",
+          })
+        ]))
+      ]),
+      transition("closed => open", [
+        style({display: "flex"}),
+        animate("300ms ease-out")
+      ])
+    ])
+  ]
 })
 export class ProjectComponent implements OnInit {
-  /**
-   * Images to show in the slide
-   */
   @Input()
-  public imagesUrls: string[] = ["/assets/yo3.jpg", "/assets/bg.jpg"];
+  public projectData: Project = null as unknown as Project;
 
-  /**
-   * Project name
-   */
-  @Input()
-  public name: string = "Name";
+  public descAnimationState: 'open' | 'closed' = 'closed';
 
-  public techStack: Technology[] = [Technology.ANGULAR, Technology.NODEJS];
-  public links: Link[] = [{
-    url: "https://github.com/BenjaminGuzman/SpineWare",
-    name: "GitHub",
-    imgUrl: "/assets/img/tech/angular.jpg"
-  }, {
-    url: "https://medium.com/sdhfiosdhfdoi",
-    name: "Medium",
-  }, {
-    url: "https://medium.com/sdhfiosdhfdoi",
-    name: "Medium",
-    icon: "picture_as_pdf"
-  }];
+  @ViewChild("descPanel")
+  private descPanel: ElementRef = undefined as unknown as ElementRef;
 
-  constructor() { }
+  constructor(private _changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
-}
 
-interface Link {
-  url: string
-  name: string;
-  imgUrl?: string;
-  icon?: string;
-}
+  toggleDescAnimation() {
+    if (this.descAnimationState === 'open')
+      this.descAnimationState = 'closed';
+    else
+      this.descAnimationState = 'open';
+  }
 
-class Technology {
-  public static ANGULAR = new Technology("Angular", "/assets/img/tech/angular.jpg", "https://angular.io");
-  public static NODEJS = new Technology("Node.js", "/assets/img/tech/node.jpg", "https://nodejs.org");
-  private constructor(public name: string, public imgUrl: string, public url: string | null | undefined) {
+  descAnimationDone(evt: AnimationEvent) {
+    if (evt.toState === 'open')
+      this.descPanel.nativeElement.style = "opacity: 1";
   }
 }
