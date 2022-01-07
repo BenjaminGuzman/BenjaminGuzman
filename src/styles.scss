@@ -18,19 +18,15 @@ html, body {
 }
 
 .glass {
-  @apply backdrop-blur-sm dark:backdrop-blur bg-opacity-80 dark:bg-opacity-10 bg-gray-50 dark:bg-black text-color;
+  @apply backdrop-blur-sm dark:backdrop-blur bg-opacity-80 dark:bg-opacity-20 bg-gray-50 dark:bg-black text-color;
 }
 
 .profile-pic {
   @apply border-gray-400 border-2;
 }
 
-.max-w-10 {
-  max-width: 3rem;
-}
-
-.max-h-10 {
-  max-height: 3rem;
+.max-w-8 {
+  max-width: 2rem;
 }
 
 @supports not (backdrop-filter: blur(1px)) {
