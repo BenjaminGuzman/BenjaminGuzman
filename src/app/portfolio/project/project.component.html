@@ -17,18 +17,17 @@
     </ng-template>
   </swiper>
 
-  <!-- TODO expand this overlay on hover to show everything (description and tags) -->
   <div class="absolute flex flex-col justify-between gap-2 w-full bottom-0 text-center py-1 px-2 glass z-10 rounded-t-xl"
        (click)="toggleDescAnimation()"
        (mouseenter)="descAnimationState = 'open'"
        (mouseleave)="descAnimationState = 'closed'">
-    <p class="font-medium text-base md:text-lg">{{projectData.name}}</p>
+    <p class="font-semibold text-base md:text-lg">{{projectData.name}}</p>
     <div class="flex flex-col justify-between items-center gap-3 transition-opacity opacity-0 duration-300 ease-linear"
          [@descAnimation]="descAnimationState"
          (@descAnimation.done)="descAnimationDone($event)"
          #descPanel>
       <p class="text-sm md:text-base">{{projectData.description}}</p>
-      <div class="flex flex-wrap gap-2 justify-center text-sm md:text-base">
+      <div class="flex flex-wrap gap-x-2 gap-y-1 justify-center text-sm md:text-base">
         <span *ngFor="let tag of projectData.tags">{{tag}}</span>
       </div>
     </div>
