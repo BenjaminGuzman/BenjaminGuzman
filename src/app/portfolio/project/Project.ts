@@ -1,4 +1,4 @@
-import {Technology} from "../Technology";
+import {Technology} from "./Technology";
 import {Link} from "../../Link";
 
 export interface Project {

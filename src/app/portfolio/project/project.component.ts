@@ -57,25 +57,25 @@ export class ProjectComponent implements OnInit {
   @Input()
   public projectData: Project = null as unknown as Project;
 
-  public descAnimationState: 'open' | 'closed' = 'closed';
+  public descriptionAnimationState: 'open' | 'closed' = 'closed';
 
-  @ViewChild("descPanel")
-  private descPanel: ElementRef = undefined as unknown as ElementRef;
+  @ViewChild("descriptionPanel")
+  private descriptionPanel: ElementRef = undefined as unknown as ElementRef;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
 
-  toggleDescAnimation() {
-    if (this.descAnimationState === 'open')
-      this.descAnimationState = 'closed';
+  toggleDescriptionAnimation() {
+    if (this.descriptionAnimationState === 'open')
+      this.descriptionAnimationState = 'closed';
     else
-      this.descAnimationState = 'open';
+      this.descriptionAnimationState = 'open';
   }
 
-  descAnimationDone(evt: AnimationEvent) {
+  descriptionAnimationDone(evt: AnimationEvent) {
     if (evt.toState === 'open')
-      this.descPanel.nativeElement.style = "opacity: 1";
+      this.descriptionPanel.nativeElement.style = "opacity: 1";
   }
 }

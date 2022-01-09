@@ -10,6 +10,7 @@ import {FooterComponent} from './footer/footer.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {PortfolioComponent} from './portfolio/portfolio.component';
 import {ProjectComponent} from './portfolio/project/project.component';
+import {HttpClientModule} from '@angular/common/http';
 
 SwiperCore.use([Navigation]);
 @NgModule({
@@ -24,7 +25,8 @@ SwiperCore.use([Navigation]);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SwiperModule
+    SwiperModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
