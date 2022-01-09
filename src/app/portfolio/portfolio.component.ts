@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Project} from "./project/Project";
-import {Technology} from "./Technology";
+import {SupabaseService} from "../supabase.service";
 
 @Component({
   selector: 'app-portfolio',
@@ -9,66 +9,18 @@ import {Technology} from "./Technology";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PortfolioComponent implements OnInit {
-  public projects: Project[] = [{
-    name: "SpineWare",
-    imgUrls: ["/assets/img/spineware/sw.png"],
-    techStack: [Technology.JAVA],
-    links: [{
-      url: "https://gituhub.com/BenjaminGuzman/SpineWare",
-      imgUrl: "/assets/img/tech/python.png",
-      name: "GitHub"
-    }],
-    description: "Super description",
-    tags: ["#desktop-app", "#computer-vision"]
-  }, {
-    name: "Microstart",
-    imgUrls: ["/assets/img/spineware/sw.png"],
-    techStack: [Technology.JAVA],
-    links: [{
-      url: "https://gituhub.com/BenjaminGuzman/SpineWare",
-      imgUrl: "/assets/img/tech/python.png",
-      name: "GitHub"
-    }],
-    description: "Super description",
-    tags: ["#desktop-app", "#computer-vision"]
-  }, {
-    name: "GQLFedUtils",
-    imgUrls: ["/assets/img/spineware/sw.png"],
-    techStack: [Technology.JAVA],
-    links: [{
-      url: "https://gituhub.com/BenjaminGuzman/SpineWare",
-      imgUrl: "/assets/img/tech/python.png",
-      name: "GitHub"
-    }],
-    description: "Super description",
-    tags: ["#desktop-app", "#computer-vision"]
-  }, {
-    name: "Row Reduction",
-    imgUrls: ["/assets/img/spineware/sw.png"],
-    techStack: [Technology.JAVA],
-    links: [{
-      url: "https://gituhub.com/BenjaminGuzman/SpineWare",
-      imgUrl: "/assets/img/tech/python.png",
-      name: "GitHub"
-    }],
-    description: "Super description",
-    tags: ["#desktop-app", "#computer-vision"]
-  }, {
-    name: "Punnett Square",
-    imgUrls: ["/assets/img/spineware/sw.png"],
-    techStack: [Technology.JAVA],
-    links: [{
-      url: "https://gituhub.com/BenjaminGuzman/SpineWare",
-      imgUrl: "/assets/img/tech/python.png",
-      name: "GitHub"
-    }],
-    description: "Super description",
-    tags: ["#desktop-app", "#computer-vision"]
-  }];
+  public projects: Project[] = [];
+  public loading: boolean = true;
 
-  constructor() { }
+  constructor(private supabase: SupabaseService, private changeDetectorRef: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
+    this.supabase.getProjects().then(p => {
+      this.projects = p;
+      this.loading = false;
+      this.changeDetectorRef.markForCheck();
+    });
   }
 
 }
