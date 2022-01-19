@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sans-serif {
+  font-family: 'Poppins', sans-serif;
+  //letter-spacing: 1px;
+}
+
+.text-color {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.text-color-dim {
+  @apply text-gray-600 dark:text-gray-400;
+}
+
+.glass {
+  @apply backdrop-blur-sm dark:backdrop-blur bg-opacity-80 dark:bg-opacity-20 bg-gray-50 dark:bg-black text-color;
+}
+
+.profile-pic {
+  @apply border-gray-400 border-2;
+}
+
+.max-w-6 {
+  max-width: 1.5rem;
+}
+
+.input-form {
+  @apply bg-transparent text-color transition-colors px-1 py-3 border-0 border-b-2 focus:ring-0 focus:outline-0 sans-serif
+  dark:border-gray-700 dark:focus:border-white
+  border-gray-400 focus:border-black;
+  outline: none;
+}
+
+.input-form::placeholder {
+  opacity: 0.6 !important;
+}
+
+.dark .input-form::placeholder {
+  opacity: 0.4 !important;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  /* If the browser doesn't support blur, change the opacity */
+  .bg-opacity-95-no-blur {
+    --tw-bg-opacity: 0.95 !important;
+  }
+  .bg-opacity-90-no-blur {
+    --tw-bg-opacity: 0.90 !important;
+  }
+  .bg-opacity-85-no-blur {
+    --tw-bg-opacity: 0.85 !important;
+  }
+  .bg-opacity-80-no-blur {
+    --tw-bg-opacity: 0.80 !important;
+  }
+  .bg-opacity-50-no-blur {
+    --tw-bg-opacity: 0.50 !important;
+  }
+  .glass {
+    --tw-bg-opacity: 0.85 !important;
+  }
+}
