@@ -1,15 +1,50 @@
-<footer class="flex justify-around flex-wrap gap-2 text-color bg-gray-200 dark:bg-[#111] w-full py-4 px-6">
-  <div class="flex flex-col justify-center items-center">
-    <img src="/assets/profile.png" alt="Benjamín Guzmán" class="rounded-full w-36 border-gray-400 border-2">
-    <p>Benjamín Guzmán</p>
+<footer id="footer" class="flex justify-around flex-wrap gap-12 text-color bg-gray-200 dark:bg-[#111] w-full py-10 px-6 md:px-10 scroll-mt-14">
+  <div class="flex flex-col items-center">
+    <img src="/assets/profile.webp" alt="Benjamín Guzmán" class="rounded-full w-24 md:w-36 border-gray-400 border-2">
+    <p class="text-lg md:text-xl">Benjamín Guzmán</p>
   </div>
 
-  <div>
-    Social media
+  <div class="flex flex-col gap-2 items-center">
+    <p class="text-lg md:text-xl font-medium text-center">Contact info</p>
+    <app-social-media></app-social-media>
+    <p class="font-medium mt-6">bg@benjaminguzman.net</p>
+    <a href="footer.component.html" title="GPG Key">
+      <img src="/assets/img/tech/gnupg.webp" alt="GPG Key" class="w-8 hover:scale-110">
+    </a>
   </div>
 
-  <form action="">
-    Contact me form
-  </form>
+  <div class="flex-grow max-w-xl">
+    <p class="text-lg md:text-xl font-medium text-center">Contact me</p>
+    <form action="" class="flex flex-col gap-8">
+      <!-- Name -->
+      <div class="flex flex-col">
+        <label for="name" class="text-color-dim">Name<sup>*</sup></label>
+        <input type="text" id="name" name="name" class="input-form" required placeholder="Irene Adler">
+      </div>
+
+      <!-- Subject -->
+      <div class="flex flex-col">
+        <label for="subject" class="text-color-dim">Subject<sup>*</sup></label>
+        <input type="text" id="subject" name="subject" class="input-form" required placeholder="I'd like us to work together">
+      </div>
+
+      <!-- Reply to -->
+      <div class="flex flex-col">
+        <label for="reply-to" class="text-color-dim">Reply to</label>
+        <input type="email" id="reply-to" name="reply-to" class="input-form" placeholder="email@example.com">
+      </div>
+
+      <!-- Message -->
+      <div class="flex flex-col">
+        <label for="message" class="text-color-dim">Message<sup>*</sup></label>
+        <textarea id="message" name="message" class="input-form" required placeholder="Hi, I saw your webpage and..."></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="flex justify-center">
+        <button type="submit" class="rounded bg-transparent transition-colors border-2 border-black px-3 py-2 text-lg dark:border-white dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white">Submit</button>
+      </div>
+    </form>
+  </div>
 </footer>
 <p class="dark:bg-black text-color w-full text-center p-2">Copyright &copy; 2021-2022. Benjamín Antonio Velasco Guzmán</p>

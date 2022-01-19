@@ -1,4 +1,4 @@
-import { DataBackgroundDirective } from './data-background.directive';
+import {DataBackgroundDirective} from './data-background.directive';
 
 describe('DataBackgroundDirective', () => {
   it('should create an instance', () => {

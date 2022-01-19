@@ -1,52 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import "~swiper/scss";
 @import "~swiper/scss/navigation";
+@import "~swiper/scss/lazy";
 
 :root {
   --swiper-theme-color: rgb(210, 210, 210);
   --swiper-navigation-size: 22px;
 }
 
+.swiper-lazy-preloader-green {
+  --swiper-preloader-color: rgb(22, 163, 74);
+}
+
 html, body {
   font-family: 'Source Code Pro', sans-serif;
-}
-
-.text-color {
-  @apply text-gray-900 dark:text-gray-100;
-}
-
-.glass {
-  @apply backdrop-blur-sm dark:backdrop-blur bg-opacity-80 dark:bg-opacity-20 bg-gray-50 dark:bg-black text-color;
-}
-
-.profile-pic {
-  @apply border-gray-400 border-2;
-}
-
-.max-w-8 {
-  max-width: 2rem;
-}
-
-@supports not (backdrop-filter: blur(1px)) {
-  /* If the browser doesn't support blur, change the opacity */
-  .bg-opacity-95-no-blur {
-    --tw-bg-opacity: 0.95 !important;
-  }
-  .bg-opacity-90-no-blur {
-    --tw-bg-opacity: 0.90 !important;
-  }
-  .bg-opacity-85-no-blur {
-    --tw-bg-opacity: 0.85 !important;
-  }
-  .bg-opacity-80-no-blur {
-    --tw-bg-opacity: 0.80 !important;
-  }
-  .bg-opacity-50-no-blur {
-    --tw-bg-opacity: 0.50 !important;
-  }
-  .glass {
-    --tw-bg-opacity: 0.85 !important;
-  }
 }
