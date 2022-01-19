@@ -15,12 +15,17 @@ export class PortfolioComponent implements OnInit {
   constructor(private supabase: SupabaseService, private changeDetectorRef: ChangeDetectorRef) {
   }
 
-  ngOnInit(): void {
-    this.supabase.getProjects().then(p => {
-      this.projects = p;
+  async ngOnInit() {
+    try {
+      this.projects = await this.supabase.getProjects();
+    } catch (e) {
+      // network error should be handled by getProjects()
+      console.error(e);
+      alert("😟 Some really weird error happened. Sorry 😵");
+    } finally {
       this.loading = false;
       this.changeDetectorRef.markForCheck();
-    });
+    }
   }
 
 }

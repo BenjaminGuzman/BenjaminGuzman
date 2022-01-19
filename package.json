@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "tailwind": "tailwindcss build --input src/styles.scss --config tailwind.config.js --output src/tailwind.css",
+    "tailwind": "tailwindcss build --input src/tailwind.scss --config tailwind.config.js --output src/tailwind.css",
     "start": "ng serve & npm run tailwind -- --watch",
     "build": "npm run tailwind && ng build",
     "watch": "ng build --watch --configuration development",

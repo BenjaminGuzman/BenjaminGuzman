@@ -39,12 +39,16 @@ export class SupabaseService {
         name,
         description,
         n_imgs,
+        priority,
+        skills,
         ProjectStack(
           Technology(name, acronym, url, icon, icon_type)
         ),
-        ProjectLink(url, icon, icon_type),
+        ProjectLink(name, url, icon, icon_type),
         ProjectTag(tag)
-      `);
+      `)
+      .gte("priority", 0)
+      .order("priority", {ascending: false});
 
     if (error || data === null) {
       // @ts-ignore
@@ -55,7 +59,8 @@ export class SupabaseService {
     this.projects = data.map(p => ({
       name: p.name,
       description: p.description,
-      imgUrls: [...Array(p.n_imgs).keys()].map(imgIdx => `/assets/${p.name}/${imgIdx}.png`),
+      skills: p.skills,
+      imgUrls: [...Array(p.n_imgs).keys()].map(imgIdx => `/assets/img/${p.name}/${imgIdx}.webp`),
       techStack: p.ProjectStack.map(s => ({
         iconType: s.Technology.icon_type,
         icon: s.Technology.icon,
@@ -63,10 +68,16 @@ export class SupabaseService {
         name: s.Technology.name,
         acronym: s.Technology.acronym
       })),
-      links: p.ProjectLink,
+      links: p.ProjectLink.map(l => ({
+        iconType: l.icon_type,
+        icon: l.icon,
+        url: l.url,
+        name: l.name
+      })),
       tags: p.ProjectTag.map(t => t.tag)
     }));
-    console.log(this.projects, data[0].ProjectStack);
+    // console.log(this.projects, data[0].ProjectStack);
+    // console.log(this.projects[0].links, data[0].ProjectLink);
     return this.projects;
   }
 }
@@ -76,6 +87,8 @@ interface ProjectDB {
   name: string;
   description: string;
   n_imgs: number;
+  priority: number;
+  skills: string;
   ProjectStack: {
     Technology: {
       name: string;
