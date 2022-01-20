@@ -24,4 +24,6 @@ export interface Project {
   tags: string[];
 
   skills: string;
+
+  years: string;
 }

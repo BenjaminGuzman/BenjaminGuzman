@@ -32,34 +32,43 @@ export class SupabaseService {
     if (this.projects.length > 0)
       return this.projects;
 
-    const {data, error} = await this.supabase
-      .from<ProjectDB>("Project")
-      .select(`
-        id,
-        name,
-        description,
-        n_imgs,
-        priority,
-        skills,
-        ProjectStack(
-          Technology(name, acronym, url, icon, icon_type)
-        ),
-        ProjectLink(name, url, icon, icon_type),
-        ProjectTag(tag)
-      `)
-      .gte("priority", 0)
-      .order("priority", {ascending: false});
+    let projects: ProjectDB[] | null = this.loadProjectsFromCache();
 
-    if (error || data === null) {
-      // @ts-ignore
-      AppComponent.handleNetworkError(error);
-      throw error;
+    if (!projects) { // if there was no cache, load data from database
+      let {data, error} = await this.supabase
+        .from<ProjectDB>("Project")
+        .select(`
+          id,
+          name,
+          description,
+          n_imgs,
+          priority,
+          skills,
+          years,
+          ProjectStack(
+            Technology(name, acronym, url, icon, icon_type)
+          ),
+          ProjectLink(name, url, icon, icon_type),
+          ProjectTag(tag)
+        `)
+        .gte("priority", 0)
+        .order("priority", {ascending: false});
+
+      if (error || data === null) {
+        // @ts-ignore
+        AppComponent.handleNetworkError(error);
+        throw error;
+      }
+
+      projects = data;
+      this.saveProjectsToCache(projects);
     }
 
-    this.projects = data.map(p => ({
+    this.projects = projects.map(p => ({
       name: p.name,
       description: p.description,
       skills: p.skills,
+      years: p.years,
       imgUrls: [...Array(p.n_imgs).keys()].map(imgIdx => `/assets/img/${p.name}/${imgIdx}.webp`),
       techStack: p.ProjectStack.map(s => ({
         iconType: s.Technology.icon_type,
@@ -80,6 +89,38 @@ export class SupabaseService {
     // console.log(this.projects[0].links, data[0].ProjectLink);
     return this.projects;
   }
+
+  public loadProjectsFromCache(): ProjectDB[] | null {
+    const writtenAtStr = sessionStorage.getItem("ProjectsWrittenAt"); // date the cache was written
+    if (!writtenAtStr) // there is no cache
+      return null;
+
+    const writtenAt = new Date(writtenAtStr);
+    if (isNaN(writtenAt.getTime())) // cache may be corrupted
+      return null;
+
+    const elapsedDays = (new Date().getTime() - writtenAt.getTime()) / 1_000 /* ms -> s */ / 60 /* s -> m */ / 60/* m -> h */ / 24/* h -> d */;
+    if (elapsedDays > 7) // cache is there but it is too old
+      return null;
+
+    const projectsStr = sessionStorage.getItem("Projects");
+    if (!projectsStr)
+      return null;
+
+    try {
+      return JSON.parse(projectsStr);
+    } catch (e) {
+      console.error("Error while parsing data from cache", e, "Cache:", projectsStr);
+      return null;
+    }
+  }
+
+  public saveProjectsToCache(projects: ProjectDB[]) {
+    // because the user is likely to visit the webpage just once (or very few times)
+    // it is better to save the cache in sessionStorage (erased when the tab is closed) rather than in localStorage (erased upon user request)
+    sessionStorage.setItem("ProjectsWrittenAt", new Date().toISOString());
+    sessionStorage.setItem("Projects", JSON.stringify(projects));
+  }
 }
 
 interface ProjectDB {
@@ -89,6 +130,7 @@ interface ProjectDB {
   n_imgs: number;
   priority: number;
   skills: string;
+  years: string;
   ProjectStack: {
     Technology: {
       name: string;
