@@ -14,11 +14,14 @@
        (click)="toggleDescriptionAnimation()"
        (mouseenter)="descriptionAnimationState = 'open'"
        (mouseleave)="descriptionAnimationState = 'closed'">
-    <p class="font-semibold text-base md:text-lg">{{projectData.name}}</p>
+    <p>
+      <span class="font-semibold text-base md:text-lg">{{projectData.name}}</span>
+    </p>
     <div class="flex flex-col justify-between items-center gap-3 transition-opacity opacity-0 duration-300 ease-linear"
          [@descAnimation]="descriptionAnimationState"
          (@descAnimation.done)="descriptionAnimationDone($event)"
          #descriptionPanel>
+      <span class="text-xs text-center text-opacity-70">{{projectData.years}}</span>
       <p class="sans-serif text-center font-medium">Skills practiced</p>
       <p class="sans-serif text-sm">{{projectData.skills}}</p>
       <!-- links -->

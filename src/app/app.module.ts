@@ -13,6 +13,10 @@ import {ProjectComponent} from './portfolio/project/project.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SocialMediaComponent} from './social-media/social-media.component';
 import {DataBackgroundDirective} from './data-background.directive';
+import {SkillsComponent} from './skills/skills.component';
+import {SkillComponent} from './skills/skill/skill.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {AboutExtraComponent} from './about-extra/about-extra.component';
 
 SwiperCore.use([Navigation, Lazy]);
 @NgModule({
@@ -23,15 +27,19 @@ SwiperCore.use([Navigation, Lazy]);
     PortfolioComponent,
     ProjectComponent,
     SocialMediaComponent,
-    DataBackgroundDirective
+    DataBackgroundDirective,
+    SkillsComponent,
+    SkillComponent,
+    AboutExtraComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    SwiperModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        SwiperModule,
+        HttpClientModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

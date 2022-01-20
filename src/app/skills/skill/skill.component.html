@@ -1,0 +1,10 @@
+<div class="flex flex-col gap-4">
+  <div class="flex gap-x-2 items-center justify-center text-color">
+    <img *ngIf="iconType === 'img'" src="{{icon}}" alt="{{title}}" class="max-w-12 w-12">
+    <i *ngIf="iconType === 'class'" class="{{icon}} max-w-12 w-12 text-4xl"></i>
+    <div class="text-lg md:text-xl font-medium">{{title}}</div>
+  </div>
+  <div class="sans-serif text-center text-color">
+    <ng-content></ng-content>
+  </div>
+</div>
