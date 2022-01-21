@@ -95,8 +95,12 @@ export class FooterComponent implements OnInit {
       }
 
       let body = new HttpParams().set("form-name", "contact");
-      for (const [controlName, control] of Object.entries(this.formControls))
+      for (let [controlName, control] of Object.entries(this.formControls)) {
+        if (controlName === "replyTo")
+          controlName = "reply-to";
+
         body = body.set(controlName, control.value);
+      }
 
       const response = this.http.post("/", body, {
         headers: {
