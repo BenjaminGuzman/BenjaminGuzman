@@ -94,8 +94,7 @@ export class FooterComponent implements OnInit {
         return;
       }
 
-      let body = new HttpParams();
-      body.set("form-name", "contact");
+      let body = new HttpParams().set("form-name", "contact");
       for (const [controlName, control] of Object.entries(this.formControls))
         body = body.set(controlName, control.value);
 
