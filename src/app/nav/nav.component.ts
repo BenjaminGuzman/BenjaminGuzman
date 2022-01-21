@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {environment} from "../../environments/environment";
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'app-nav',
@@ -71,7 +72,7 @@ export class NavComponent implements OnInit {
 
   private lastScrollPos: number = 0;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
     this.toggleDarkMode();
@@ -93,6 +94,9 @@ export class NavComponent implements OnInit {
   }
 
   public toggleDarkMode(): void {
+    if (!isPlatformBrowser(this.platformId))
+      return;
+
     if (this.nextColorModeIcon === 'dark_mode') {
       localStorage.theme = 'dark';
       this.nextColorModeIcon = 'light_mode';

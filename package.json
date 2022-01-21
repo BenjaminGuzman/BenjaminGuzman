@@ -7,7 +7,11 @@
     "start": "ng serve & npm run tailwind -- --watch",
     "build": "npm run tailwind && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run benjaminguzman:serve-ssr",
+    "serve:ssr": "node dist/benjaminguzman/server/main.js",
+    "build:ssr": "ng build && ng run benjaminguzman:server",
+    "prerender": "ng run benjaminguzman:prerender"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +22,11 @@
     "@angular/forms": "~12.2.0",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
+    "@angular/platform-server": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@nguniversal/express-engine": "^12.1.3",
     "@supabase/supabase-js": "^1.29.1",
+    "express": "^4.15.2",
     "rxjs": "~6.6.0",
     "swiper": "^7.4.1",
     "tslib": "^2.3.0",
@@ -29,6 +36,8 @@
     "@angular-devkit/build-angular": "~12.2.14",
     "@angular/cli": "~12.2.14",
     "@angular/compiler-cli": "~12.2.0",
+    "@nguniversal/builders": "^12.1.3",
+    "@types/express": "^4.17.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "autoprefixer": "^10.4.0",
