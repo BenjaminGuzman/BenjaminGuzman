@@ -47,7 +47,7 @@ export class NavComponent implements OnInit {
    * Indicates light or dark mode
    * It is a class for the icon shown in the nav
    */
-  public nextColorModeIcon: 'light_mode' | 'dark_mode' = 'dark_mode';
+  public nextColorModeIcon: 'light_mode' | 'dark_mode' = 'light_mode'; // default theme is dark
 
   /**
    * Indicates if the menu for small devices is open or closed
@@ -75,6 +75,9 @@ export class NavComponent implements OnInit {
   constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId))
+      localStorage.theme = 'dark'; // default theme is dark
+
     this.toggleDarkMode();
 
     if (environment.useHeaderAnimation)
