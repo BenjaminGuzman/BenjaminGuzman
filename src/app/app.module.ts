@@ -33,7 +33,7 @@ SwiperCore.use([Navigation, Lazy]);
     AboutExtraComponent
   ],
     imports: [
-        BrowserModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
         BrowserAnimationsModule,
         AppRoutingModule,
         SwiperModule,
