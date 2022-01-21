@@ -78,8 +78,6 @@ export class NavComponent implements OnInit {
     if (isPlatformBrowser(this.platformId))
       localStorage.theme = 'dark'; // default theme is dark
 
-    this.toggleDarkMode();
-
     if (environment.useHeaderAnimation)
       window.onscroll = () => this.headerAnimation();
   }
