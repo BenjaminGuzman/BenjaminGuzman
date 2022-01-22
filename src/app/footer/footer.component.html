@@ -77,5 +77,28 @@
       </p>
     </form>
   </div>
+  <p class="text-center sans-serif">
+    This site <span class="font-medium">doesn't use cookies</span> and <span class="font-medium">doesn't track you</span><br/>
+    I believe in freedom and don't like surveillance<br/>
+    So please <span class="font-medium">don't misuse the contact form</span>, otherwise I'd be forced to add reCAPTCHA (which tracks and collects information about you)<br/>
+  </p>
 </footer>
 <p class="dark:bg-black text-color w-full text-center p-2">Copyright &copy; 2021-2022. Benjamín Antonio Velasco Guzmán</p>
+
+<!-- Form for the netlify bot -->
+<form class="hidden" data-netlify="true" netlify-honeypot="honey" name="contact" method="POST">
+  <!-- Name -->
+  <input type="text" name="name">
+
+  <!-- Subject -->
+  <input type="text" name="subject">
+
+  <!-- Reply to -->
+  <input type="email" name="reply-to">
+
+  <!-- Message -->
+  <textarea name="message"></textarea>
+
+  <!-- honeypot -->
+  <input name="honey"/>
+</form>
