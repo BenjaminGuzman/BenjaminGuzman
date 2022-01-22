@@ -11,7 +11,7 @@
     <p class="text-lg md:text-xl mt-6 font-medium text-center">Email</p>
     <p class="font-medium">bg@benjaminguzman.net</p>
     <a href="/assets/pk.pub.asc" title="GPG Key" download="BenjaminGuzman.pub.asc">
-      <img src="/assets/img/tech/gnupg.webp" alt="GPG Key" class="w-8 hover:scale-110">
+      <img src="/assets/img/tech/gnupg.webp" alt="GPG Key" class="w-8 hover:scale-125 transition-transform">
     </a>
   </div>
 
@@ -54,7 +54,7 @@
       <!-- Submit -->
       <div class="flex justify-center">
         <button type="submit"
-                class="rounded bg-transparent transition-colors border-2 border-black px-3 py-2 text-lg dark:border-white dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white disabled:opacity-50"
+                class="rounded bg-transparent transition-colors border-2 border-black px-3 py-2 text-lg dark:border-white dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white active:scale-90 transition-transforms disabled:opacity-50"
                 *ngIf="formDataStatus !== 'SENT'"
                 [disabled]="formDataStatus === 'SENDING'">
           <div *ngIf="formDataStatus === 'SENDING'" class="w-full flex justify-center">
@@ -72,7 +72,7 @@
       <!-- honeypot -->
       <p class="hidden">
         <label>
-          Don’t fill this out if you’re human: <input name="honey"/>
+          Don't fill this out if you're human: <input name="honey"/>
         </label>
       </p>
     </form>
