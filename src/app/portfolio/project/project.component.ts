@@ -58,6 +58,7 @@ export class ProjectComponent implements OnInit {
   public projectData: Project = null as unknown as Project;
 
   public descriptionAnimationState: 'open' | 'closed' = 'closed';
+  public animationChangedAt: Date = new Date();
 
   @ViewChild("descriptionPanel")
   private descriptionPanel: ElementRef = undefined as unknown as ElementRef;
@@ -68,10 +69,22 @@ export class ProjectComponent implements OnInit {
   }
 
   toggleDescriptionAnimation() {
+    // click goes after mouse enter
+    // so, we need to check mouse enter was not triggered because the user clicked the element
+    // otherwise, that (the mouseenter) would trigger the description to open, and this will close it (wrong behaviour)
+    // We prevent that by ignoring changes that occur in less than 500 ms
+    if (new Date().getTime() - this.animationChangedAt.getTime() < 500)
+      return;
+
     if (this.descriptionAnimationState === 'open')
       this.descriptionAnimationState = 'closed';
     else
       this.descriptionAnimationState = 'open';
+  }
+
+  setDescriptionAnimationState(state: 'open' | 'closed') {
+    this.descriptionAnimationState = state;
+    this.animationChangedAt = new Date();
   }
 
   descriptionAnimationDone(evt: AnimationEvent) {
