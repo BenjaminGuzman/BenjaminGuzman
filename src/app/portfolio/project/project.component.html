@@ -12,8 +12,8 @@
 
   <div class="absolute flex flex-col justify-between gap-2 w-full bottom-0 text-center py-1 px-2 glass z-10 rounded-t"
        (click)="toggleDescriptionAnimation()"
-       (mouseenter)="descriptionAnimationState = 'open'"
-       (mouseleave)="descriptionAnimationState = 'closed'">
+       (mouseenter)="setDescriptionAnimationState('open')"
+       (mouseleave)="setDescriptionAnimationState('closed')">
     <p>
       <span class="font-semibold text-base md:text-lg">{{projectData.name}}</span>
     </p>
