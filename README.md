@@ -1,5 +1,5 @@
 <p align="center">
-<img width="600" src="src/assets/banner.png" align="center">
+<img width="1200" src="src/assets/banner.png" align="center">
 </p>
 <h2 align="center">👋 I'm Benjamín Guzmán</h2>
 <p align="center"><a href="https://benjaminguzman.net" >benjaminguzman.net</a></p>
