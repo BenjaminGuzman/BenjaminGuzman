@@ -53,8 +53,10 @@ export class AppComponent implements AfterViewInit {
 
     this.ignoreScrollThresh = 50//document.documentElement.clientHeight / 2;
 
-    if (isPlatformBrowser(this.platformId))
-      window.addEventListener("scroll", () => this.detectActiveFragment())
+    if (isPlatformBrowser(this.platformId) && !window.matchMedia("only screen and (max-width: 760px)").matches) {
+      // on small devices don't add scroll listener to improve performance
+      window.addEventListener("scroll", () => this.detectActiveFragment());
+    }
   }
 
   public detectActiveFragment() {
