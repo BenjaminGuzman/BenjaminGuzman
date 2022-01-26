@@ -5,8 +5,11 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-})],
+    initialNavigation: "enabled",
+    scrollPositionRestoration: "disabled",
+    anchorScrolling: "enabled",
+    scrollOffset: [0, 64]
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

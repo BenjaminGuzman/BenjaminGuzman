@@ -2,25 +2,27 @@
   <app-nav></app-nav>
 
   <!-- Landing image -->
-  <div id="about" class="relative w-full h-screen bg-center bg-cover bg-fixed">
-    <div class="absolute w-full h-full bg-black bg-opacity-60"></div>
+  <div id="about" class="relative w-full h-screen bg-center bg-cover bg-fixed" #about>
+    <div class="absolute w-full h-full bg-black bg-opacity-70"></div>
     <div class="absolute flex flex-col items-center justify-center top-0 bottom-0 left-4 md:left-6 xl:left-8 w-3/5 md:w-2/5 lg:text-lg gap-2 md:gap-4">
       <div class="flex">👋 I'm&nbsp;<h1 class="font-semibold">Benjamín Guzmán</h1></div>
       <p class="text-justify sans-serif">
-        I'm a backend developer, lifelong learner, student.
-        Started programming in 2017, I have worked on several projects related to various areas of software development, but the things that interest me the most are:
-        <br>
-        <span class="text-center font-medium">Backend development, security and data science</span>
+        I'm a backend developer, lifelong learner, student. I've been programming since 2017.
+        <br/>
+        I've worked as fullstack on several projects related to various areas of software development,
+        but what I like the most is backend, and I'm good at it. However, I'm also interested in
+        <span class="text-center font-medium">security, data science</span> and <span class="text-center font-medium">entrepreneurship</span>
+<!--        Started programming in 2017, I have worked on several projects related to various areas of software development, so I've been fullstack developer, but the things that interest me the most are:-->
       </p>
       <app-social-media></app-social-media>
     </div>
   </div>
 
-  <app-portfolio></app-portfolio>
+  <app-portfolio #portfolio></app-portfolio>
 
-  <app-skills></app-skills>
+  <app-skills #skills></app-skills>
 
 <!--  <app-about-extra></app-about-extra>-->
 
-  <app-footer></app-footer>
+  <app-footer #footer></app-footer>
 </div>
