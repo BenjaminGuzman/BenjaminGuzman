@@ -5,7 +5,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 })
 export class NavService {
   public fragmentChange: EventEmitter<FragmentId> = new EventEmitter<FragmentId>();
-  private _activeFragment: FragmentId = FragmentId.about;
+  private _activeFragment: FragmentId | null = null;
 
   constructor() { }
 
@@ -17,7 +17,7 @@ export class NavService {
     this.fragmentChange.emit(f);
   }
 
-  get activeFragment(): FragmentId {
+  get activeFragment(): FragmentId | null {
     return this._activeFragment;
   }
 }
