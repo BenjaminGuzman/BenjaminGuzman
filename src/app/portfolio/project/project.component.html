@@ -29,12 +29,14 @@
       <p class="sans-serif text-sm">{{projectData.skills}}</p>
       <!-- links -->
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <a *ngFor="let link of projectData.links" href="{{link.url}}" target="_blank">
+        <a *ngFor="let link of projectData.links" href="{{link.url}}" target="_blank" rel="noopener">
           <img *ngIf="link.iconType === 'img'"
                src="{{link.icon}}"
                alt="{{link.name}}"
                title="{{link.name}}"
-               class="max-w-6 w-6"/>
+               class="max-w-6 w-6"
+               width="24"
+               height="24"/>
           <i *ngIf="link.iconType === 'class'" class="{{link.icon}} text-2xl"></i>
           <span *ngIf="!link.icon" title="{{link.name}}" class="text-blue-600 underline">{{link.name}}</span>
         </a>
@@ -52,13 +54,15 @@
 
   <!-- Technology stack -->
   <div class="flex flex-wrap items-center justify-center gap-2 my-1 flex-grow">
-    <a *ngFor="let tech of projectData.techStack" href="{{tech.url}}" target="_blank">
+    <a *ngFor="let tech of projectData.techStack" href="{{tech.url}}" target="_blank" rel="noopener">
       <i *ngIf="tech.iconType === 'class'" class="{{tech.icon}} text-2xl"></i>
       <img *ngIf="tech.iconType === 'img'"
            src="{{tech.icon}}"
            alt="{{tech.name}}"
            title="{{tech.name}}"
-           class="max-w-6 w-6"/>
+           class="max-w-6 w-6"
+           width="24"
+           height="24"/>
     </a>
   </div>
 
