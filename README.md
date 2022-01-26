@@ -7,8 +7,8 @@
 
 ### I'm a backend developer, lifelong learner and student
 
-I've worked as fullstack on several projects related to various areas of software development, but what I like the most is backend, and I'm good at it. 
-However, I'm also interested in security, data science and entrepreneurship
+I've worked as fullstack on various projects, but what I like the most is backend. 
+However, I'm also interested in security, data science and entrepreneurship.
 
 ### I'm currently...
 
