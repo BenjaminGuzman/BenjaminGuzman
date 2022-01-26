@@ -57,30 +57,30 @@ However, I'm also interested in security, data science and entrepreneurship.
 
 ## Social media
 
-<a href="https://github.com/BenjaminGuzman" target="_blank">
+<a href="https://github.com/BenjaminGuzman" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/github-light.webp" alt="GitHub" title="GitHub" width="30">
 </a>
 
-<a href="https://stackexchange.com/users/10857896/benjam%c3%adn-guzm%c3%a1n" target="_blank">
+<a href="https://stackexchange.com/users/10857896/benjam%c3%adn-guzm%c3%a1n" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/se.svg" alt="Stack Exchange" title="Stack Exchange" width="30">
 </a>
 
 <!-- HackerRank -->
-<a href="https://www.hackerrank.com/guzmanbenjamin" target="_blank">
+<a href="https://www.hackerrank.com/guzmanbenjamin" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/hackerrank.webp" alt="HackerRank" title="HackerRank" width="30">
 </a>
 
 <!-- Platzi -->
-<a href="https://platzi.com/p/BenjaminGuzman" target="_blank">
+<a href="https://platzi.com/p/BenjaminGuzman" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/platzi.webp" alt="Platzi" title="Platzi" width="30">
 </a>
 
 <!-- Medium -->
-<a href="https://medium.com/@GuzmanBenjamin" target="_blank">
+<a href="https://medium.com/@GuzmanBenjamin" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/medium.webp" alt="Medium" title="Medium" width="30">
 </a>
 
 <!-- LinkedIn -->
-<a href="https://www.linkedin.com/in/benjam%C3%ADn-antonio-velasco-guzm%C3%A1n-714144192" target="_blank">
+<a href="https://www.linkedin.com/in/benjam%C3%ADn-antonio-velasco-guzm%C3%A1n-714144192" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/linkedin.webp" alt="LinkedIn" title="LinkedIn" width="30">
 </a>
