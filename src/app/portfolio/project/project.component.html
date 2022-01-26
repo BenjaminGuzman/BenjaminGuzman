@@ -43,8 +43,8 @@
 <!-- project info -->
 <div class="flex flex-col gap-y-2 py-2">
   <!-- tags -->
-  <div class="flex flex-wrap gap-x-2 gap-y-1 justify-center font-medium text-sm text-blue-600 dark:text-blue-400">
-    <span *ngFor="let tag of projectData.tags">{{tag}}</span>
+  <div class="flex flex-wrap gap-x-2 gap-y-1 justify-center font-medium text-sm dark:text-blue-400">
+    <span *ngFor="let tag of projectData.tags" class="bg-purple-100 dark:bg-black text-color rounded-full px-1.5 py-0.5">{{tag}}</span>
   </div>
 
   <!-- Technology stack -->

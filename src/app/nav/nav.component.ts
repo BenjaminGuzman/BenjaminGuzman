@@ -2,7 +2,10 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, P
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {environment} from "../../environments/environment";
 import {isPlatformBrowser} from "@angular/common";
+import {FragmentId, FragmentIdT, NavService} from "./nav.service";
+import {Router} from "@angular/router";
 
+const MENU_ANIMATION_DURATION = 300;
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -33,11 +36,11 @@ import {isPlatformBrowser} from "@angular/common";
         display: "none"
       })),
       transition("open => closed", [
-        animate("300ms ease-in")
+        animate(`${MENU_ANIMATION_DURATION}ms ease-in`)
       ]),
       transition("closed => open", [
         style({display: "block"}),
-        animate("300ms ease-out")
+        animate(`${MENU_ANIMATION_DURATION}ms ease-out`)
       ])
     ])
   ]
@@ -72,14 +75,26 @@ export class NavComponent implements OnInit {
 
   private lastScrollPos: number = 0;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private navService: NavService,
+    private router: Router
+  ) {
+    this.navService.fragmentChange.subscribe((f: FragmentId) => {
+      // console.log("Changed to fragment ", f);
+      this.changeDetectorRef.markForCheck();
+    });
+  }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId))
       localStorage.theme = 'dark'; // default theme is dark
 
-    if (environment.useHeaderAnimation)
-      window.onscroll = () => this.headerAnimation();
+    if (environment.useHeaderAnimation && isPlatformBrowser(this.platformId))
+      window.addEventListener("scroll", () => this.headerAnimation());
+
+    this.router.navigateByUrl(`#nothing`, {skipLocationChange: true}); // set initial router state to something invalid
   }
 
   public headerAnimation() {
@@ -124,5 +139,21 @@ export class NavComponent implements OnInit {
     }
 
     this.changeDetectorRef.markForCheck();
+  }
+
+  public isFragmentActive(fragment: FragmentIdT) {
+    return this.navService.activeFragment === fragment;
+  }
+
+  public navigateTo(fragment: FragmentIdT) {
+    // console.log("Navigating to " + fragment, this.isFragmentActive(fragment));
+    if (this.isFragmentActive(fragment))
+      return;
+
+    if (this.isNavShown) {
+      setTimeout(() => this.router.navigateByUrl(`#${fragment}`, {skipLocationChange: true}), MENU_ANIMATION_DURATION);
+      this.toggleNavMenu() // close the nav menu, and then perform navigation
+    } else
+      this.router.navigateByUrl(`#${fragment}`, {skipLocationChange: true});
   }
 }

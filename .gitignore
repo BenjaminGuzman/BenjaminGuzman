@@ -1,6 +1,9 @@
 # tailwind css
 **/tailwind.css
 
+
+**/*.md.backup
+
 # compiled output
 /dist
 /tmp

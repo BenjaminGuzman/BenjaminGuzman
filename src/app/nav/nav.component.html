@@ -23,11 +23,27 @@
 </div>
 
 <ng-template #navRef>
-  <nav class="h-full md:mt-auto flex flex-col md:flex-row md:gap-4 justify-around md:justify-center items-center text-color md:text-lg">
-    <a href="#about">About</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#skills">Skills</a>
-<!--    <a href="">Medium</a>-->
-    <a href="#footer">Contact</a>
+  <nav class="h-full md:mt-auto flex flex-col md:flex-row md:gap-6 justify-around md:justify-center items-center text-color md:text-lg">
+    <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
+       [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('about')}"
+       (click)="navigateTo('about')">
+      About
+    </a>
+    <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
+       [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('portfolio')}"
+       (click)="navigateTo('portfolio')">
+      Portfolio
+    </a>
+    <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
+       [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('skills')}"
+       (click)="navigateTo('skills')">
+      Skills
+    </a>
+<!--    <a routerLinkActive="text-4xl text-green-600 dark:text-green-400" [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'} [skipLocationChange]="true""(click)='navigateToMedium')</a>-->
+    <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
+       [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('footer')}"
+       (click)="navigateTo('footer')">
+      Contact
+    </a>
   </nav>
 </ng-template>
