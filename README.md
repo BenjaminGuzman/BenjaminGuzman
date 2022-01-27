@@ -81,6 +81,6 @@ However, I'm also interested in security, data science and entrepreneurship.
 </a>
 
 <!-- LinkedIn -->
-<a href="https://www.linkedin.com/in/benjam%C3%ADn-antonio-velasco-guzm%C3%A1n-714144192" target="_blank" rel="noopener">
+<a href="https://www.www.linkedin.com/in/GuzmanBenjamin" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/linkedin.webp" alt="LinkedIn" title="LinkedIn" width="30">
 </a>
