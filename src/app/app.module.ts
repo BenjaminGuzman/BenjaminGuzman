@@ -17,6 +17,7 @@ import {SkillsComponent} from './skills/skills.component';
 import {SkillComponent} from './skills/skill/skill.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AboutExtraComponent} from './about-extra/about-extra.component';
+import {MatrixAnimationComponent} from './matrix-animation/matrix-animation.component';
 
 SwiperCore.use([Navigation, Lazy]);
 @NgModule({
@@ -30,7 +31,8 @@ SwiperCore.use([Navigation, Lazy]);
     DataBackgroundDirective,
     SkillsComponent,
     SkillComponent,
-    AboutExtraComponent
+    AboutExtraComponent,
+    MatrixAnimationComponent
   ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'serverApp' }),
