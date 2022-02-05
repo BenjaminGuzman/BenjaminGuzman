@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {createClient, SupabaseClient} from '@supabase/supabase-js';
 import {environment} from 'src/environments/environment';
 import {AppComponent} from './app.component';
 import {IconType} from "./portfolio/project/Technology";
 import {Project} from "./portfolio/project/Project";
+import {isPlatformBrowser} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class SupabaseService {
 
   private projects: Project[] = [];
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 
@@ -100,6 +101,9 @@ export class SupabaseService {
    * To do so you need to call {@link loadProjectsFromCache}
    */
   public isCacheHealthy(): boolean {
+    if (!isPlatformBrowser(this.platformId))
+      return false;
+
     const writtenAtStr = sessionStorage.getItem("ProjectsWrittenAt"); // date the cache was written
     if (!writtenAtStr) // there is no cache
       return false;
