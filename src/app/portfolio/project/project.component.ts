@@ -61,7 +61,7 @@ export class ProjectComponent implements OnInit {
   public animationChangedAt: Date = new Date();
 
   @ViewChild("descriptionPanel")
-  private descriptionPanel: ElementRef = undefined as unknown as ElementRef;
+  private descriptionPanel: ElementRef<HTMLDivElement> = undefined as unknown as ElementRef;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef) { }
 
@@ -89,6 +89,6 @@ export class ProjectComponent implements OnInit {
 
   descriptionAnimationDone(evt: AnimationEvent) {
     if (evt.toState === 'open')
-      this.descriptionPanel.nativeElement.style = "opacity: 1";
+      this.descriptionPanel.nativeElement.setAttribute("style", "opacity: 1");
   }
 }

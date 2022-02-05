@@ -4,12 +4,14 @@ import {
   Component,
   ElementRef,
   Inject,
+  OnInit,
   PLATFORM_ID,
   ViewChild
 } from '@angular/core';
 import {PostgrestError} from "@supabase/supabase-js";
 import {FragmentId, NavService} from "./nav/nav.service";
 import {isPlatformBrowser} from "@angular/common";
+import {SupabaseService} from "./supabase.service";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,7 @@ import {isPlatformBrowser} from "@angular/common";
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('about')
   public aboutEl: ElementRef = null as unknown as ElementRef;
 
@@ -30,6 +32,8 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('footer', {read: ElementRef})
   public footerEl: ElementRef = null as unknown as ElementRef;
 
+  public showMatrixOnInit: boolean = true;
+
   private sections: {elem: ElementRef, fragment: FragmentId}[] = [];
 
   private lastActiveTop: number = 0;
@@ -39,7 +43,15 @@ export class AppComponent implements AfterViewInit {
    */
   private ignoreScrollThresh: number = 0;
 
-  constructor(private navService: NavService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    private navService: NavService,
+    private supabaseService: SupabaseService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+  }
+
+  ngOnInit() {
+    this.showMatrixOnInit = !this.supabaseService.isCacheHealthy();
   }
 
   ngAfterViewInit(): void {

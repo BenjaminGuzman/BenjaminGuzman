@@ -90,17 +90,30 @@ export class SupabaseService {
     return this.projects;
   }
 
-  public loadProjectsFromCache(): ProjectDB[] | null {
+  /**
+   * Returns true if the following conditions are true for the cache:
+   *
+   * - It is present (a call to {@link saveProjectsToCache} has been made previously)
+   * - It hasn't expired
+   *
+   * Note that this doesn't load or check the storage key "Projects" is actually present and valid.
+   * To do so you need to call {@link loadProjectsFromCache}
+   */
+  public isCacheHealthy(): boolean {
     const writtenAtStr = sessionStorage.getItem("ProjectsWrittenAt"); // date the cache was written
     if (!writtenAtStr) // there is no cache
-      return null;
+      return false;
 
     const writtenAt = new Date(writtenAtStr);
     if (isNaN(writtenAt.getTime())) // cache may be corrupted
-      return null;
+      return false;
 
     const elapsedDays = (new Date().getTime() - writtenAt.getTime()) / 1_000 /* ms -> s */ / 60 /* s -> m */ / 60/* m -> h */ / 24/* h -> d */;
-    if (elapsedDays > 7) // cache is there but it is too old
+    return elapsedDays <= 7;
+  }
+
+  public loadProjectsFromCache(): ProjectDB[] | null {
+    if (!this.isCacheHealthy())
       return null;
 
     const projectsStr = sessionStorage.getItem("Projects");
