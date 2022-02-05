@@ -4,10 +4,13 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Inject,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   ViewChild
 } from '@angular/core';
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'app-matrix-animation',
@@ -55,8 +58,8 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   private msg: string = "Loading...";
   private msgLenPx: number = 0;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-    if (navigator.hardwareConcurrency >= 4) { // probably the computer can handle a greater refresh rate
+  constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(platformId) && navigator.hardwareConcurrency >= 4) { // probably the computer can handle a greater refresh rate
       this.refreshRate /= 2;
       this.nIterations *= 2;
     }
@@ -70,6 +73,9 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngAfterViewInit() {
+    if (!isPlatformBrowser(this.platformId))
+      return;
+
     this.intervalId = setInterval(() => this.matrixAnimation(), this.refreshRate);
 
     // set width and height so the browser has a hint of how many pixels are in there and draw them with a good resolution
