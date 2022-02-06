@@ -37,7 +37,9 @@ export class PortfolioComponent implements OnInit {
 
   showProjects() {
     this.shouldShowProjects = true;
-    if (!this.isLoading)
+    if (!this.isLoading) {
+      // this.changeDetectorRef.detectChanges();
       this.changeDetectorRef.markForCheck();
+    }
   }
 }

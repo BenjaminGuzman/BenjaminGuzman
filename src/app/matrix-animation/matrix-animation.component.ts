@@ -113,6 +113,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
       this.canvasWorker.onmessage = ({data}) => {
         if (data.type === "END") {
           this.canvasWorker?.terminate();
+          this.onEnd.emit();
           this.onAnimationEnd();
         } else if (data.type === "ITERATION") {
           this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nIterations - data.i) / this.nIterations}`);
@@ -122,7 +123,9 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
       // we can emit end event even though the animation is showing because as it is executing in background
       // it won't block any other stuff in the main thread.
       // So, we can consider the animation to be finished to start working on other stuff
-      this.onEnd.emit();
+      // this.onEnd.emit();
+      // RECONSIDERATION: Even though that is true,
+      // it is still more nice looking to have a smooth animation and wait very little for the page to have scroll enabled
     } else { // execute on the main thread (may block it)
       this.ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
 
@@ -196,8 +199,8 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
 
     if (this.i >= this.nIterations) {
       clearInterval(this.intervalId);
-      this.onAnimationEnd();
       this.onEnd.emit();
+      this.onAnimationEnd();
     }
   }
 
