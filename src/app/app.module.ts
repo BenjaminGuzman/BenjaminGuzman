@@ -20,6 +20,7 @@ import {AboutExtraComponent} from './about-extra/about-extra.component';
 import {MatrixAnimationComponent} from './matrix-animation/matrix-animation.component';
 
 SwiperCore.use([Navigation, Lazy]);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,15 +35,16 @@ SwiperCore.use([Navigation, Lazy]);
     AboutExtraComponent,
     MatrixAnimationComponent
   ],
-    imports: [
-        BrowserModule.withServerTransition({ appId: 'serverApp' }),
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        SwiperModule,
-        HttpClientModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    SwiperModule,
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
