@@ -58,10 +58,13 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   /**
    * Refresh rate of the canvas (in millis)
    */
-  private readonly refreshRate: number = 60;
+  private readonly refreshRate: number = 80;
 
   private msg: string = "Loading...";
   private msgLenPx: number = 0;
+
+  private canvasWorker: Worker | null = null;
+  private offscreenCanvas: OffscreenCanvas | null = null;
 
   constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(platformId) && navigator.hardwareConcurrency >= 4) { // probably the computer can handle a greater refresh rate
@@ -81,22 +84,54 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     if (!isPlatformBrowser(this.platformId))
       return;
 
-    this.intervalId = setInterval(() => this.matrixAnimation(), this.refreshRate);
+    document.documentElement.style.overflow = 'hidden';
 
     // set width and height so the browser has a hint of how many pixels are in there and draw them with a good resolution
     this.width = this.canvas.nativeElement.width = this.canvas.nativeElement.offsetWidth;
     this.height = this.canvas.nativeElement.height = this.canvas.nativeElement.offsetHeight;
-
-    this.ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
 
     const nCols = Math.floor(this.width / this.charWidth);
 
     // start with characters in random positions
     this.y = Array.from({length: nCols}, () => Math.random() * 3 * this.charWidth + this.charWidth);
 
-    // measure the message to be written
-    this.ctx.font = this.font;
-    this.msgLenPx = this.ctx.measureText(this.msg).width;
+    // start the worker that will render stuff inside canvas
+    if (typeof Worker !== 'undefined' && this.canvas.nativeElement.transferControlToOffscreen) {
+      this.canvasWorker = new Worker(new URL('./animation.worker', import.meta.url));
+      this.offscreenCanvas = this.canvas.nativeElement.transferControlToOffscreen();
+      this.canvasWorker.postMessage({
+        type: 'CONFIG',
+        font: this.font,
+        y: this.y,
+        charWidth: this.charWidth,
+        canvas: this.offscreenCanvas,
+        msg: this.msg,
+        nIterations: this.nIterations,
+        refreshRate: this.refreshRate
+      }, [this.offscreenCanvas as OffscreenCanvas]);
+
+      this.canvasWorker.onmessage = ({data}) => {
+        if (data.type === "END") {
+          this.canvasWorker?.terminate();
+          this.onAnimationEnd();
+        } else if (data.type === "ITERATION") {
+          this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nIterations - data.i) / this.nIterations}`);
+        }
+      };
+
+      // we can emit end event even though the animation is showing because as it is executing in background
+      // it won't block any other stuff in the main thread.
+      // So, we can consider the animation to be finished to start working on other stuff
+      this.onEnd.emit();
+    } else { // execute on the main thread (may block it)
+      this.ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
+
+      // measure the message to be written
+      this.ctx.font = this.font;
+      this.msgLenPx = this.ctx.measureText(this.msg).width;
+
+      this.intervalId = setInterval(() => this.matrixAnimation(), this.refreshRate);
+    }
   }
 
   private matrixAnimation() {
@@ -128,7 +163,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     });
 
     // add a small animation with the dots ...
-    if (this.i % 5 == 0) { // modulo 5 to execute the code not on every call, 'cause that doesn't look good
+    if (this.i % 5 == 0) { // modulo 5 to execute the code not on every call 'cause that doesn't look good
       if (this.msg.endsWith("..."))
         this.msg = this.msg.slice(0, this.msg.length - 3);
       else
@@ -161,10 +196,16 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
 
     if (this.i >= this.nIterations) {
       clearInterval(this.intervalId);
-      this.isShowing = false;
-      this.changeDetectorRef.markForCheck();
+      this.onAnimationEnd();
       this.onEnd.emit();
     }
+  }
+
+  private onAnimationEnd() {
+    this.isShowing = false;
+    this.changeDetectorRef.markForCheck();
+
+    document.documentElement.style.overflowY = 'scroll';
   }
 
 }

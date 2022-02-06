@@ -3,7 +3,7 @@
   <swiper class="w-full h-full"
           [navigation]="projectData.imgUrls.length > 1"
           [preloadImages]="false"
-          [lazy]="{checkInView: true, loadPrevNext: true}">
+          [lazy]="{checkInView: false, loadPrevNext: true}">
     <ng-template swiperSlide *ngFor="let imgUrl of projectData.imgUrls">
       <div class="swiper-lazy w-full h-full bg-cover bg-center rounded-t" dataBackground="{{imgUrl}}">
         <div class="swiper-lazy-preloader swiper-lazy-preloader-green"></div>
