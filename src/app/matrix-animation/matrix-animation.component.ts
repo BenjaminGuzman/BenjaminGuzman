@@ -4,9 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Inject,
   OnDestroy,
   OnInit,
+  Output,
   PLATFORM_ID,
   ViewChild
 } from '@angular/core';
@@ -21,6 +23,9 @@ import {isPlatformBrowser} from "@angular/common";
 export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild("canvas")
   public canvas: ElementRef<HTMLCanvasElement> = null as unknown as ElementRef;
+
+  @Output()
+  public onEnd: EventEmitter<void> = new EventEmitter<void>();
 
   public isShowing: boolean = true;
 
@@ -158,6 +163,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
       clearInterval(this.intervalId);
       this.isShowing = false;
       this.changeDetectorRef.markForCheck();
+      this.onEnd.emit();
     }
   }
 

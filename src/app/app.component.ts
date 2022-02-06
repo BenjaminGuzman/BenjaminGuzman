@@ -12,6 +12,7 @@ import {PostgrestError} from "@supabase/supabase-js";
 import {FragmentId, NavService} from "./nav/nav.service";
 import {isPlatformBrowser} from "@angular/common";
 import {SupabaseService} from "./supabase.service";
+import {PortfolioComponent} from "./portfolio/portfolio.component";
 
 @Component({
   selector: 'app-root',
@@ -22,6 +23,9 @@ import {SupabaseService} from "./supabase.service";
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('about')
   public aboutEl: ElementRef = null as unknown as ElementRef;
+
+  @ViewChild('portfolio', {static: true})
+  public portfolio: PortfolioComponent = null as unknown as PortfolioComponent;
 
   @ViewChild('portfolio', {read: ElementRef})
   public portfolioEl: ElementRef = null as unknown as ElementRef;
@@ -52,6 +56,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.showMatrixOnInit = !this.supabaseService.isCacheHealthy();
+
+    if (!this.showMatrixOnInit)
+      this.onMatrixAnimationEnd();
   }
 
   ngAfterViewInit(): void {
@@ -97,5 +104,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) {
     alert(`${title}:${msg}`);
     console.error(e);
+  }
+
+  public onMatrixAnimationEnd() {
+    this.portfolio.showProjects();
   }
 }
