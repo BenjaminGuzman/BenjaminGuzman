@@ -11,6 +11,11 @@ let i: number = 0;
 let msg: string;
 let msgLenPx: number;
 let nIterations: number;
+let img: ImageBitmap | null = null;
+
+const benjaminGuzman: string = "Benjamín Guzmán";
+const benjaminGuzmanFont: string = "15pt monospace normal";
+let benjaminGuzmanLenPx: number;
 
 let intervalId: any;
 
@@ -69,10 +74,21 @@ function draw() {
     canvas.height / 2 + charWidth / 2 - 4 // -4 is just a hard-coded value
   );
 
+  // draw the profile pic and name
+  if (img) {
+    ctx.drawImage(img, canvas.width / 2 - 32, canvas.height / 2 - 64 - 40, 64, 64);
+
+    // it looks better just with the image
+    // ctx.fillStyle = "#00ff00";
+    // ctx.font = benjaminGuzmanFont;
+    // ctx.fillText(benjaminGuzman, canvas.width / 2 - benjaminGuzmanLenPx / 2, canvas.height / 2 - 40);
+  }
+
   ++i;
 
   if (i >= nIterations) {
     clearInterval(intervalId);
+    img?.close();
     self.postMessage({type: "END"});
   } else {
     // requestAnimationFrame(draw);
@@ -92,6 +108,14 @@ addEventListener("message", ({ data }) => {
     ctx = canvas.getContext("2d");
     ctx.font = font;
     msgLenPx = ctx.measureText(msg).width;
+
+    ctx.font = benjaminGuzmanFont;
+    benjaminGuzmanLenPx = ctx.measureText(benjaminGuzman).width;
+
+    fetch("/assets/profile.webp")
+      .then(response => response.blob())
+      .then(blob => createImageBitmap(blob))
+      .then(imgBitmap => img = imgBitmap);
 
     // requestAnimationFrame(draw);
     intervalId = setInterval(draw, data.refreshRate);

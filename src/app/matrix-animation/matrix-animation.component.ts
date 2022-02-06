@@ -66,6 +66,11 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   private canvasWorker: Worker | null = null;
   private offscreenCanvas: OffscreenCanvas | null = null;
 
+  /**
+   * Profile image to show on the canvas
+   */
+  private img: ImageBitmap | null = null;
+
   constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(platformId) && navigator.hardwareConcurrency >= 4) { // probably the computer can handle a greater refresh rate
       this.refreshRate /= 2;
@@ -127,6 +132,12 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
       // RECONSIDERATION: Even though that is true,
       // it is still more nice looking to have a smooth animation and wait very little for the page to have scroll enabled
     } else { // execute on the main thread (may block it)
+      // don't fetch the profile image to improve performance
+      // fetch("/assets/profile.webp")
+      //   .then(response => response.blob())
+      //   .then(blob => createImageBitmap(blob))
+      //   .then(imgBitmap => this.img = imgBitmap);
+
       this.ctx = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
 
       // measure the message to be written
@@ -195,6 +206,12 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
       this.height / 2 + this.charWidth / 2 - 4 // -4 is just a hard-coded value
     );
 
+    // draw the profile pic
+    // Don't show the profile pic to keep performance.
+    // The pic is show only if web workers are available
+    // if (this.img)
+    //   this.ctx.drawImage(this.img, this.width / 2 - 32, this.height / 2 - 64 - 40, 64, 64);
+
     ++this.i;
 
     if (this.i >= this.nIterations) {
@@ -209,6 +226,8 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     this.changeDetectorRef.markForCheck();
 
     document.documentElement.style.overflowY = 'scroll';
+
+    this.img?.close();
   }
 
 }
