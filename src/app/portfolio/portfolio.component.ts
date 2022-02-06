@@ -11,7 +11,9 @@ import {environment} from "../../environments/environment";
 })
 export class PortfolioComponent implements OnInit {
   public projects: Project[] = [];
-  public loading: boolean = true;
+  public isLoading: boolean = true;
+
+  private shouldShowProjects: boolean = false;
 
   constructor(private supabase: SupabaseService, private changeDetectorRef: ChangeDetectorRef) {
   }
@@ -25,9 +27,17 @@ export class PortfolioComponent implements OnInit {
     } catch (e) {
       // network error should be handled by getProjects()
     } finally {
-      this.loading = false;
-      this.changeDetectorRef.markForCheck();
+      this.isLoading = false;
+
+      // this is to prevent the UI from blocking because it is rendering the matrix animation and the project list
+      if (this.shouldShowProjects)
+        this.changeDetectorRef.markForCheck();
     }
   }
 
+  showProjects() {
+    this.shouldShowProjects = true;
+    if (!this.isLoading)
+      this.changeDetectorRef.markForCheck();
+  }
 }

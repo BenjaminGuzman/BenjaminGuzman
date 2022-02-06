@@ -27,4 +27,7 @@
   <app-footer #footer></app-footer>
 </div>
 
-<app-matrix-animation *ngIf="showMatrixOnInit" class="top-0 fixed w-full h-full pointer-events-none z-50"></app-matrix-animation>
+<app-matrix-animation *ngIf="showMatrixOnInit"
+                      (onEnd)="onMatrixAnimationEnd()"
+                      class="top-0 fixed w-full h-full pointer-events-none z-50">
+</app-matrix-animation>
