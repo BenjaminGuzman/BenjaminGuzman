@@ -1,6 +1,8 @@
 # tailwind css
 **/tailwind.css
 
+# Some assets
+src/assets/pdf/**/*.pdf
 
 **/*.md.backup
 
