@@ -2,7 +2,7 @@
 <img width="1200" src="src/assets/banner.webp" align="center" alt="Benjamín Guzmán">
 </p>
 <h2 align="center">👋 I'm Benjamín Guzmán</h2>
-<p align="center"><a href="https://benjaminguzman.net" >benjaminguzman.net</a></p>
+<p align="center"><a href="https://benjaminguzman.net">benjaminguzman.net</a></p>
 <p align="center">bg@benjaminguzman.net</p>
 
 ### I'm a backend developer, lifelong learner and student
@@ -81,6 +81,6 @@ However, I'm also interested in security, data science and entrepreneurship.
 </a>
 
 <!-- LinkedIn -->
-<a href="https://www.www.linkedin.com/in/GuzmanBenjamin" target="_blank" rel="noopener">
+<a href="https://www.linkedin.com/in/GuzmanBenjamin" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/linkedin.webp" alt="LinkedIn" title="LinkedIn" width="30">
 </a>
