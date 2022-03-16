@@ -127,6 +127,10 @@ export class NavComponent implements OnInit {
       document.documentElement.classList.remove('dark');
   }
 
+  public isDarkModeEnabled(): boolean {
+    return this.nextColorModeIcon === 'light_mode';
+  }
+
   public toggleNavMenu() {
     if (this.isNavShown) {
       this.isNavShown = false;

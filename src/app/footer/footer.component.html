@@ -55,7 +55,7 @@
       <!-- Submit -->
       <div class="flex justify-center">
         <button type="submit"
-                class="rounded bg-transparent transition-colors border-2 border-black px-3 py-2 text-lg dark:border-white dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white active:scale-90 transition-transforms disabled:opacity-50"
+                class="rounded-sm bg-transparent transition-colors border-2 border-black px-3 py-2 text-lg dark:border-white dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white active:scale-90 transition-transforms disabled:opacity-50"
                 *ngIf="formDataStatus !== 'SENT'"
                 [disabled]="formDataStatus === 'SENDING'">
           <div *ngIf="formDataStatus === 'SENDING'" class="w-full flex justify-center">
