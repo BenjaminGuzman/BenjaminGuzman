@@ -8,7 +8,7 @@
     <div class="hidden md:block">
       <ng-container *ngTemplateOutlet="navRef"></ng-container>
     </div>
-    <button (click)="toggleDarkMode()">
+    <button [title]="isDarkModeEnabled() ? 'Experimental!' : ''" (click)="toggleDarkMode()">
       <span class="material-icons material-icons-outlined">{{nextColorModeIcon}}</span>
     </button>
     <button class="block md:hidden" (click)="toggleNavMenu()"> <!-- menu button for small screens -->
