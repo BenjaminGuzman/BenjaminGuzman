@@ -5,12 +5,13 @@
 
 .slide-up {
   //display: none;
-  animation-name: slide-up;
+  animation-name: slideUp;
   animation-duration: 1s;
+  animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
-@keyframes slide-up {
+@keyframes slideUp {
   0% {
     transform: translateY(50%);
     opacity: 0;

@@ -16,7 +16,9 @@
       </p>
       <app-social-media></app-social-media>
     </div>
-    <span class="absolute bottom-6 text-center mx-auto left-0 right-0 material-icons text-white text-3xl animate-bounce">expand_more</span>
+    <button class="absolute bottom-6 text-center mx-auto left-0 right-0" (click)="scrollDown()">
+      <span class="material-icons text-white text-3xl animate-bounce">expand_more</span>
+    </button>
   </main>
 
   <app-portfolio #portfolio></app-portfolio>

@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {firstValueFrom} from "rxjs";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-footer',
@@ -68,10 +70,10 @@ export class FooterComponent implements OnInit {
       return "This field is required";
 
     if (control.hasError('minlength'))
-      return `Min length is ${this.controlBounds[controlName].minLength}`;
+      return `Minimum length is ${this.controlBounds[controlName].minLength}`;
 
     if (control.hasError('maxlength'))
-      return `Max length is ${this.controlBounds[controlName].maxLength}`;
+      return `Maximum length is ${this.controlBounds[controlName].maxLength}`;
 
     if (control.hasError('email'))
       return "Must be an email";
@@ -80,7 +82,7 @@ export class FooterComponent implements OnInit {
     return "I made a mistake while programming. Please report. Details are in console";
   }
 
-  public onSubmit() {
+  public async onSubmit() {
     this.formDataStatus = FormDataStatus.SENDING;
     this.changeDetectorRef.markForCheck();
 
@@ -102,16 +104,28 @@ export class FooterComponent implements OnInit {
         body = body.set(controlName, control.value);
       }
 
-      const response = this.http.post("/", body, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        responseType: "text"
-      }).toPromise();
+      if (environment.production) {
+        const observable = this.http.post("/", body, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          responseType: "text"
+        });
+        await firstValueFrom(observable);
+      } else {
+        await new Promise<void>(resolve => {
+          setTimeout(() => {
+            console.log("Not sending data on dev mode. Update the code if you want to really do so");
+            resolve();
+          }, 1_000);
+        })
+      }
 
       this.formDataStatus = FormDataStatus.SENT;
+    } catch (e) {
+      console.error("Error while sending form data", e);
+      this.formDataStatus = FormDataStatus.ERROR;
     } finally {
-      // this.sendingData = false;
       this.changeDetectorRef.markForCheck();
     }
   }
