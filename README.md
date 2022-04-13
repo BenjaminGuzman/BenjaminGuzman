@@ -2,8 +2,8 @@
 <img width="1200" src="src/assets/banner.webp" align="center" alt="Benjamín Guzmán">
 </p>
 <h2 align="center">👋 I'm Benjamín Guzmán</h2>
-<p align="center"><a href="https://benjaminguzman.net">benjaminguzman.net</a></p>
-<p align="center">bg@benjaminguzman.net</p>
+<p align="center"><a href="https://benjaminguzman.dev">benjaminguzman.dev</a></p>
+<p align="center">bg@benjaminguzman.dev</p>
 
 ### I'm a backend developer, lifelong learner and student
 
