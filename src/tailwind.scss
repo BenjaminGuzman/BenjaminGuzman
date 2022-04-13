@@ -27,11 +27,35 @@
   max-width: 1.5rem;
 }
 
+.form-field:focus-within label {
+  @apply font-medium dark:text-green-300 text-green-900 text-opacity-50;
+}
+
 .input-form {
   @apply bg-transparent text-color transition-colors px-1 py-3 border-0 border-b-2 focus:ring-0 focus:outline-0 sans-serif
-  dark:border-gray-700 dark:focus:border-white dark:hover:border-gray-500
-  border-gray-400 focus:border-black hover:border-gray-500;
+  dark:border-gray-700 dark:focus:border-transparent dark:hover:border-gray-500
+  border-gray-400 focus:border-transparent hover:border-gray-500;
   outline: none;
+}
+
+.input-form-wrapper {
+  @apply relative flex flex-col;
+}
+
+.input-form-wrapper::after {
+  content: '';
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  @apply dark:bg-white bg-black;
+}
+
+.input-form-wrapper:focus-within::after {
+  animation-name: slideLeft;
+  animation-timing-function: ease-in;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-duration: 300ms;
 }
 
 .input-form::placeholder {
@@ -40,6 +64,47 @@
 
 .dark .input-form::placeholder {
   opacity: 0.4 !important;
+}
+
+.submit-btn {
+  @apply px-3 py-2 text-lg relative
+  rounded-sm bg-transparent border-2 border-black dark:border-white
+  active:scale-90 transition-transform disabled:opacity-50;
+}
+
+.submit-btn::before {
+  content: '';
+  width: 100%;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @apply dark:bg-white bg-black;
+}
+
+.submit-btn::after {
+  content: 'Submit';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  @apply text-green-500 dark:text-green-600;
+}
+
+.submit-btn.w-animation:hover::before {
+  animation-name: slideCenterVertically;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  animation-duration: 300ms;
+}
+
+.submit-btn.w-animation:hover::after {
+  visibility: visible;
+}
+
+.submit-btn {
+  position: relative;
 }
 
 @supports not (backdrop-filter: blur(1px)) {

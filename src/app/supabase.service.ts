@@ -19,15 +19,10 @@ export class SupabaseService {
   }
 
   /**
-   * Get the map of technologies catalogs
+   * Get the array of projects
    *
-   * Technologies are mapped by their indexes
-   *
-   * This returns a promise because if the map hasn't been loaded yet, it'll load it (make a request to the server),
-   * and in case it was already loaded, it simply returns it
-   *
-   * If there is an error, this method will automatically call {@link AppComponent#handleNetworkError}, so you don't
-   * need to call it. Nevertheless, the promise is still rejected
+   * This array will already be sorted by the projects priority, i.e. it is guaranteed that the first element has the
+   * highest priority, and the last element the min priority (could equal if there is just 1 single priority)
    */
   public async getProjects(): Promise<Project[]> {
     if (this.projects.length > 0)

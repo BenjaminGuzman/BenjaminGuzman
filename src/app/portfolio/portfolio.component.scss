@@ -1,0 +1,28 @@
+$borderHeight: 2px;
+
+.fancy-btn-hover::before {
+  content: '';
+  height: $borderHeight;
+  width: 0;
+  position: absolute;
+  top: -$borderHeight;
+}
+
+.fancy-btn-hover::after {
+  content: '';
+  height: $borderHeight;
+  width: 0;
+  position: absolute;
+  bottom: -$borderHeight;
+}
+
+.fancy-btn-hover {
+  position: relative;
+}
+
+.fancy-btn-hover:hover::before, .fancy-btn-hover:hover::after {
+  animation-name: slideCenterHorizontally;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-duration: 300ms;
+}

@@ -1,12 +1,20 @@
 <h2 class="text-2xl md:text-3xl font-bold text-center text-color mb-2 mt-4 scroll-mt-4" id="portfolio">Portfolio</h2>
-<div class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 px-6 lg:px-10 py-8">
+<div class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 px-6 lg:px-10 pt-8 pb-4">
   <div *ngIf="isLoading" class="w-full flex justify-center col-span-12">
     <svg class="animate-spin h-10 w-10 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
     </svg>
   </div>
-  <app-project *ngFor="let project of projects"
+  <app-project *ngFor="let project of renderedProjects"
                [projectData]="project">
   </app-project>
+</div>
+<div class="w-full h-18 py-4">
+  <button class="flex justify-center text-lg items-end gap-1 mx-auto px-2 py-1 transition-colors border-t-2 border-b-2 dark:border-white border-black before:bg-green-600 after:bg-green-600 hover:border-transparent dark:hover:border-transparent fancy-btn-hover text-color"
+          [ngClass]="{'hidden': projects.length === 0}"
+          (click)="loadMore()">
+    <span class="text-lg font-medium">Load more</span>
+    <span class="material-icons material-icons-outlined">expand_more</span>
+  </button>
 </div>

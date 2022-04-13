@@ -39,11 +39,15 @@
        (click)="navigateTo('skills')">
       Skills
     </a>
-<!--    <a routerLinkActive="text-4xl text-green-600 dark:text-green-400" [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'} [skipLocationChange]="true""(click)='navigateToMedium')</a>-->
     <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
        [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('footer')}"
        (click)="navigateTo('footer')">
       Contact
+    </a>
+    <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
+       href="https://medium.com/@GuzmanBenjamin"
+       target="_blank">
+      Blog
     </a>
   </nav>
 </ng-template>

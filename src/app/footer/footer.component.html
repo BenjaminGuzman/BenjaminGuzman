@@ -25,37 +25,46 @@
           netlify-honeypot="honey"
           name="contact">
       <!-- Name -->
-      <div class="flex flex-col">
+      <div class="flex flex-col form-field">
         <label for="name" class="text-color-dim">Name<sup>*</sup></label>
-        <input type="text" id="name" [formControl]="formControls.name" name="name" class="input-form" required placeholder="Irene Adler">
-        <p class="text-xs text-red-600 py-1 px-0.5" *ngIf="formControls.name.invalid">{{getErrorMsg(formControls.name, 'name')}}</p>
+        <div class="input-form-wrapper">
+          <input type="text" id="name" [formControl]="formControls.name" name="name" class="input-form" required placeholder="Irene Adler">
+        </div>
+        <p class="text-xs sm:text-sm font-medium text-red-600 py-1 px-0.5" *ngIf="formControls.name.invalid">{{getErrorMsg(formControls.name, 'name')}}</p>
       </div>
 
       <!-- Subject -->
-      <div class="flex flex-col">
+      <div class="flex flex-col form-field">
         <label for="subject" class="text-color-dim">Subject<sup>*</sup></label>
-        <input type="text" id="subject" [formControl]="formControls.subject" name="subject" class="input-form" required placeholder="I'd like us to work together">
-        <p class="text-xs text-red-600 py-1 px-0.5" *ngIf="formControls.subject.invalid">{{getErrorMsg(formControls.subject, 'subject')}}</p>
+        <div class="input-form-wrapper">
+          <input type="text" id="subject" [formControl]="formControls.subject" name="subject" class="input-form" required placeholder="I'd like us to work together">
+        </div>
+        <p class="text-xs sm:text-sm font-medium text-red-600 py-1 px-0.5" *ngIf="formControls.subject.invalid">{{getErrorMsg(formControls.subject, 'subject')}}</p>
       </div>
 
       <!-- Reply to -->
-      <div class="flex flex-col">
+      <div class="flex flex-col form-field">
         <label for="reply-to" class="text-color-dim">Reply to</label>
-        <input type="email" id="reply-to" [formControl]="formControls.replyTo" name="reply-to" class="input-form" placeholder="email@example.com">
-        <p class="text-xs text-red-600 py-1 px-0.5" *ngIf="formControls.replyTo.invalid">{{getErrorMsg(formControls.replyTo, 'replyTo')}}</p>
+        <div class="input-form-wrapper">
+          <input type="email" id="reply-to" [formControl]="formControls.replyTo" name="reply-to" class="input-form" placeholder="email@example.com">
+        </div>
+        <p class="text-xs sm:text-sm font-medium text-red-600 py-1 px-0.5" *ngIf="formControls.replyTo.invalid">{{getErrorMsg(formControls.replyTo, 'replyTo')}}</p>
       </div>
 
       <!-- Message -->
-      <div class="flex flex-col">
+      <div class="flex flex-col form-field">
         <label for="message" class="text-color-dim">Message<sup>*</sup></label>
-        <textarea id="message" [formControl]="formControls.message" name="message" class="input-form" required placeholder="Hi, I saw your webpage and..."></textarea>
-        <p class="text-xs text-red-600 py-1 px-0.5" *ngIf="formControls.message.invalid">{{getErrorMsg(formControls.message, 'message')}}</p>
+        <div class="input-form-wrapper">
+          <textarea id="message" [formControl]="formControls.message" name="message" class="input-form" required placeholder="Hi, I saw your webpage and..."></textarea>
+        </div>
+        <p class="text-xs sm:text-sm font-medium text-red-600 py-1 px-0.5" *ngIf="formControls.message.invalid">{{getErrorMsg(formControls.message, 'message')}}</p>
       </div>
 
       <!-- Submit -->
       <div class="flex justify-center">
         <button type="submit"
-                class="rounded-sm bg-transparent transition-colors border-2 border-black px-3 py-2 text-lg dark:border-white dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white active:scale-90 transition-transforms disabled:opacity-50"
+                class="submit-btn"
+                [ngClass]="{'w-animation': formDataStatus === 'IDLE'}"
                 *ngIf="formDataStatus !== 'SENT'"
                 [disabled]="formDataStatus === 'SENDING'">
           <div *ngIf="formDataStatus === 'SENDING'" class="w-full flex justify-center">
@@ -64,7 +73,7 @@
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
           </div>
-          <span *ngIf="formDataStatus === 'IDLE' || formDataStatus === 'ERROR'">Submit</span>
+          <span class="hover:opacity-0" *ngIf="formDataStatus === 'IDLE' || formDataStatus === 'ERROR'">Submit</span>
         </button>
         <p class="text-center text-red-600 font-medium" *ngIf="formDataStatus === 'ERROR'">Sorry! There was an error, please report it. Details are in console</p>
         <p class="text-center text-green-600 font-medium" *ngIf="formDataStatus === 'SENT'">Your message was sent successfully</p>
@@ -81,7 +90,7 @@
   <p class="text-center sans-serif">
     This site <span class="font-medium">doesn't use cookies</span> and <span class="font-medium">doesn't track you</span><br/>
     I believe in freedom and don't like surveillance<br/>
-    So please <span class="font-medium">don't misuse the contact form</span>, otherwise I'd be forced to add reCAPTCHA (which tracks and collects information about you)<br/>
+    Please <span class="font-bold">don't misuse the contact form</span>, otherwise I'd be forced to add reCAPTCHA (which tracks and collects information about you)<br/>
   </p>
 </footer>
 <p class="bg-white dark:bg-black text-color w-full text-center p-2">Copyright &copy; 2021-2022. Benjamín Antonio Velasco Guzmán</p>

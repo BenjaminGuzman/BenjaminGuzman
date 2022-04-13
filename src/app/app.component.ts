@@ -109,4 +109,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public onMatrixAnimationEnd() {
     this.portfolio.showProjects();
   }
+
+  public scrollDown() {
+    // scroll 1 viewport down starting from scroll Y = 0
+    window.scrollTo(window.scrollX, document.documentElement.clientHeight - 56);
+  }
 }
