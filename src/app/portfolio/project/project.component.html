@@ -30,7 +30,7 @@
       <p class="sans-serif text-sm">{{projectData.skills}}</p>
       <!-- links -->
       <div class="flex flex-wrap items-center justify-center gap-2">
-        <a *ngFor="let link of projectData.links" href="{{link.url}}" target="_blank" rel="noopener">
+        <a *ngFor="let link of projectData.links" href="{{link.url}}" title="{{link.name}}" target="_blank" rel="noopener">
           <img *ngIf="link.iconType === 'img'"
                src="{{link.icon}}"
                alt="{{link.name}}"
