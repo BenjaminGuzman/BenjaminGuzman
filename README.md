@@ -4,6 +4,7 @@
 <h2 align="center">👋 I'm Benjamín Guzmán</h2>
 <p align="center"><a href="https://benjaminguzman.dev">benjaminguzman.dev</a></p>
 <p align="center">bg@benjaminguzman.dev</p>
+<p align="center"><a href="https://medium.com/@GuzmanBenjamin">Blog</a></p>
 
 ### I'm a backend developer, lifelong learner and student
 
@@ -13,7 +14,7 @@ However, I'm also interested in security, data science and entrepreneurship.
 ### I'm currently...
 
 [//]: # (- 👊 working at [KOBD]&#40;https://github.com/KO-Boxing-Data&#41;. [Mau Montaño]&#40;https://github.com/MauSwoosh&#41; and I are the founders.)
-- 🧬 studying bionics.
+- 🦾 studying bionics.
 
 - 💼 learning about business management.
 
