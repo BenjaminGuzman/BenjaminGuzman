@@ -33,8 +33,8 @@
 
 .input-form {
   @apply bg-transparent text-color transition-colors px-1 py-3 border-0 border-b-2 focus:ring-0 focus:outline-0 sans-serif
-  dark:border-gray-700 dark:focus:border-transparent dark:hover:border-gray-500
-  border-gray-400 focus:border-transparent hover:border-gray-500;
+  dark:border-gray-700 dark:focus:border-gray-800 dark:hover:border-gray-500
+  border-gray-400 focus:border-gray-300 hover:border-gray-500;
   outline: none;
 }
 
@@ -67,44 +67,21 @@
 }
 
 .submit-btn {
-  @apply px-3 py-2 text-lg relative
-  rounded-sm bg-transparent border-2 border-black dark:border-white
-  active:scale-90 transition-transform disabled:opacity-50;
+  @apply px-3 py-2 text-lg relative z-10
+    bg-transparent border-2 border-black transition-transform
+    hover:text-green-500 dark:hover:text-green-600
+    dark:border-white
+    active:scale-90
+    disabled:opacity-50;
 }
 
-.submit-btn::before {
+.submit-btn:before {
   content: '';
-  width: 100%;
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
-  @apply dark:bg-white bg-black;
+  @apply dark:bg-white bg-black w-full h-full scale-x-0 -z-10 top-0 left-0 right-0 absolute transition-transform duration-200;
 }
 
-.submit-btn::after {
-  content: 'Submit';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  visibility: hidden;
-  @apply text-green-500 dark:text-green-600;
-}
-
-.submit-btn.w-animation:hover::before {
-  animation-name: slideCenterVertically;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-  animation-duration: 300ms;
-}
-
-.submit-btn.w-animation:hover::after {
-  visibility: visible;
-}
-
-.submit-btn {
-  position: relative;
+.submit-btn.w-animation:hover:before {
+  @apply scale-x-100
 }
 
 @supports not (backdrop-filter: blur(1px)) {
