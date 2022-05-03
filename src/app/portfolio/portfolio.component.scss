@@ -3,7 +3,7 @@ $borderHeight: 2px;
 .fancy-btn-hover:before, .fancy-btn-hover:after {
   content: '';
   height: $borderHeight;
-  @apply absolute w-full scale-x-0 transition-transform duration-200;
+  @apply absolute w-full scale-x-0 transition-transform ease-in duration-200;
 }
 
 .fancy-btn-hover::before {

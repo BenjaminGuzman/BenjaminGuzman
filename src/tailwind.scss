@@ -77,7 +77,7 @@
 
 .submit-btn:before {
   content: '';
-  @apply dark:bg-white bg-black w-full h-full scale-x-0 -z-10 top-0 left-0 right-0 absolute transition-transform duration-200;
+  @apply dark:bg-white bg-black w-full h-full scale-x-0 -z-10 top-0 left-0 right-0 absolute transition-transform ease-in duration-200;
 }
 
 .submit-btn.w-animation:hover:before {
