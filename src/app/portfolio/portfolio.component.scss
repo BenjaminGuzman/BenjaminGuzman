@@ -1,28 +1,24 @@
 $borderHeight: 2px;
 
-.fancy-btn-hover::before {
+.fancy-btn-hover:before, .fancy-btn-hover:after {
   content: '';
   height: $borderHeight;
-  width: 0;
-  position: absolute;
+  @apply absolute w-full scale-x-0 transition-transform duration-200;
+}
+
+.fancy-btn-hover::before {
   top: -$borderHeight;
 }
 
 .fancy-btn-hover::after {
-  content: '';
-  height: $borderHeight;
-  width: 0;
-  position: absolute;
   bottom: -$borderHeight;
 }
 
 .fancy-btn-hover {
-  position: relative;
+  @apply relative before:bg-green-600 after:bg-green-600 transition-colors duration-100
+    hover:border-transparent;
 }
 
 .fancy-btn-hover:hover::before, .fancy-btn-hover:hover::after {
-  animation-name: slideCenterHorizontally;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-  animation-duration: 300ms;
+  @apply scale-x-100;
 }
