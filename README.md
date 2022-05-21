@@ -1,12 +1,12 @@
 <p align="center">
-<img width="1200" src="src/assets/banner.webp" align="center" alt="Benjamín Guzmán">
+<img width="1200" src="src/assets/banner-alt.webp" align="center" alt="Benjamín Guzmán">
 </p>
 <h2 align="center">👋 I'm Benjamín Guzmán</h2>
 <p align="center"><a href="https://benjaminguzman.dev">benjaminguzman.dev</a></p>
 <p align="center">bg@benjaminguzman.dev</p>
 <p align="center"><a href="https://medium.com/@GuzmanBenjamin">Blog</a></p>
 
-### I'm a backend developer, lifelong learner and student
+### I'm a software developer and lifelong learner
 
 I've worked as fullstack on various projects, but what I like the most is backend. 
 However, I'm also interested in security, data science and entrepreneurship.
