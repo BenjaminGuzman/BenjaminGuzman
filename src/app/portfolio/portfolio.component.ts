@@ -26,9 +26,9 @@ export class PortfolioComponent implements OnInit {
 
       this.projects = await this.supabase.getProjects();
       this.projects = this.projects.reverse(); // reverse the array because pop operation is less expensive as compared
-      // to slice operation (which moves the elements on each call)
+      // to slice operation (which moves the elements on each call) (see loadMore method)
 
-      this.loadMore(); // push the first 3 projects
+      this.loadMore(false); // push the first 3 projects
     } catch (e) {
       // network error should be handled by getProjects()
     } finally {
@@ -48,13 +48,15 @@ export class PortfolioComponent implements OnInit {
     }
   }
 
-  loadMore() {
+  loadMore(scroll: boolean = true) {
     let p: Project | undefined;
 
     for (let i = 0; i < 3 && (p = this.projects.pop()) !== undefined; i++)
       this.renderedProjects.push(p);
 
-    window.scrollTo(window.scrollX, window.scrollY + document.documentElement.clientHeight / 2); // scroll down half the viewport
+    if (scroll)
+      window.scrollTo(window.scrollX, window.scrollY + document.documentElement.clientHeight / 2); // scroll down half the viewport
+
     this.changeDetectorRef.markForCheck();
 
     // "show more" button will be automatically hidden when projects array is empty (see template)
