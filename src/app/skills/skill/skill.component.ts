@@ -11,7 +11,7 @@ export class SkillComponent implements OnInit {
   public icon: string | undefined;
 
   @Input()
-  public iconType: 'class' | 'img' = 'class';
+  public iconType: 'class' | 'img' | 'material-icon' = 'class';
 
   @Input()
   public title: string = "";
