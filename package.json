@@ -11,7 +11,7 @@
     "dev:ssr": "ng run benjaminguzman:serve-ssr",
     "serve:ssr": "node dist/benjaminguzman/server/main.js",
     "build:ssr": "ng build && ng run benjaminguzman:server",
-    "prerender": "npm run tailwind && ng run benjaminguzman:prerender"
+    "prerender": "npm run tailwind && ng run benjaminguzman:prerender && cp robots.txt dist/benjaminguzman/browser"
   },
   "private": true,
   "dependencies": {
