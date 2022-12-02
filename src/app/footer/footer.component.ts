@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
 import {environment} from "../../environments/environment";
@@ -11,12 +11,12 @@ import {environment} from "../../environments/environment";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent implements OnInit {
-  public formGroup: FormGroup;
+  public formGroup: UntypedFormGroup;
   public formControls: {
-    name: FormControl,
-    subject: FormControl,
-    replyTo: FormControl,
-    message: FormControl
+    name: UntypedFormControl,
+    subject: UntypedFormControl,
+    replyTo: UntypedFormControl,
+    message: UntypedFormControl
   };
 
   public controlBounds: ControlConfig = {
@@ -38,31 +38,31 @@ export class FooterComponent implements OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private http: HttpClient) {
     this.formControls = {
-      name: new FormControl(null, [
+      name: new UntypedFormControl(null, [
         Validators.required,
         Validators.minLength(this.controlBounds.name.minLength),
         Validators.maxLength(this.controlBounds.name.maxLength)
       ]),
-      subject: new FormControl(null, [
+      subject: new UntypedFormControl(null, [
         Validators.required,
         Validators.minLength(this.controlBounds.subject.minLength),
         Validators.maxLength(this.controlBounds.subject.maxLength)
       ]),
-      replyTo: new FormControl(null, [Validators.email]),
-      message: new FormControl(null, [
+      replyTo: new UntypedFormControl(null, [Validators.email]),
+      message: new UntypedFormControl(null, [
         Validators.required,
         Validators.minLength(this.controlBounds.message.minLength),
         Validators.maxLength(this.controlBounds.message.maxLength)
       ]),
     };
 
-    this.formGroup = new FormGroup(this.formControls);
+    this.formGroup = new UntypedFormGroup(this.formControls);
   }
 
   ngOnInit(): void {
   }
 
-  public getErrorMsg(control: FormControl, controlName: keyof ControlConfig): string {
+  public getErrorMsg(control: UntypedFormControl, controlName: keyof ControlConfig): string {
     if (control.valid || control.pristine)
       return '';
 

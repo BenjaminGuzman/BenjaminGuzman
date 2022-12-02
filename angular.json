@@ -31,9 +31,14 @@
               "src/assets"
             ],
             "styles": [
-	          "src/tailwind.css",
+	            "src/tailwind.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./node_modules"
+              ]
+            },
             "scripts": [],
             "webWorkerTsConfig": "tsconfig.worker.json"
           },
@@ -182,5 +187,7 @@
       }
     }
   },
-  "defaultProject": "benjaminguzman"
+  "cli": {
+    "analytics": false
+  }
 }
