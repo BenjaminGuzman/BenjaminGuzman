@@ -9,7 +9,7 @@
 ### I'm a software developer and lifelong learner
 
 I've worked as fullstack on various projects, but what I like the most is backend. 
-However, I'm also interested in security, data science and entrepreneurship.
+However, I'm also interested in cybersecurity, data science and bioinformatics.
 
 ### I'm currently...
 
