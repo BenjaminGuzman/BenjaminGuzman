@@ -1,7 +1,18 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef, OnDestroy,
+  OnInit,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import {Project} from "./project/Project";
 import {SupabaseService} from "../supabase.service";
 import {environment} from "../../environments/environment";
+import {last, Subscription} from "rxjs";
+import {ProjectComponent} from "./project/project.component";
 
 @Component({
   selector: 'app-portfolio',
@@ -9,7 +20,12 @@ import {environment} from "../../environments/environment";
   styleUrls: ['./portfolio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PortfolioComponent implements OnInit {
+export class PortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChildren("projectComponent", {read: ElementRef})
+  public projectComponents!: QueryList<ElementRef>;
+
+  public shouldScrollToLastProject: boolean = false;
+  public subscriptions: Subscription[] = [];
   public renderedProjects: Project[] = [];
   public projects: Project[] = [];
   public isLoading: boolean = true;
@@ -17,6 +33,21 @@ export class PortfolioComponent implements OnInit {
   private shouldShowProjects: boolean = false;
 
   constructor(private supabase: SupabaseService, private changeDetectorRef: ChangeDetectorRef) {
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  ngAfterViewInit(): void {
+    const s = this.projectComponents.changes.subscribe((updatedProjectComponents: QueryList<ElementRef>) => {
+      if (this.shouldScrollToLastProject) {
+        this.shouldScrollToLastProject = false;
+        updatedProjectComponents.last.nativeElement.scrollIntoView({block: "center"});
+      }
+    });
+
+    this.subscriptions.push(s);
   }
 
   async ngOnInit() {
@@ -54,10 +85,14 @@ export class PortfolioComponent implements OnInit {
     for (let i = 0; i < 3 && (p = this.projects.pop()) !== undefined; i++)
       this.renderedProjects.push(p);
 
-    if (scroll)
-      window.scrollTo(window.scrollX, window.scrollY + document.documentElement.clientHeight / 2); // scroll down half the viewport
-
     this.changeDetectorRef.markForCheck();
+
+    if (scroll) {
+      this.shouldScrollToLastProject = true;
+
+      // old code (now scrollIntoView is used whenever the ViewChildren changes)
+      // window.scrollTo(window.scrollX, window.scrollY + document.documentElement.clientHeight / 2); // scroll down half the viewport
+    }
 
     // "show more" button will be automatically hidden when projects array is empty (see template)
   }

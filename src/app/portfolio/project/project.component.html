@@ -28,32 +28,12 @@
       <span class="text-xs text-center text-opacity-70">{{projectData.years}}</span>
       <p class="sans-serif text-center font-medium">Skills practiced</p>
       <p class="sans-serif text-sm">{{projectData.skills}}</p>
-      <!-- links -->
-      <div class="flex flex-wrap items-center justify-center gap-2">
-        <a *ngFor="let link of projectData.links" href="{{link.url}}" title="{{link.name}}" target="_blank" rel="noopener">
-          <img *ngIf="link.iconType === 'img'"
-               src="{{link.icon}}"
-               alt="{{link.name}}"
-               title="{{link.name}}"
-               class="max-w-6 w-6"
-               width="24"
-               height="24"/>
-          <i *ngIf="link.iconType === 'class'" class="{{link.icon}} text-2xl"></i>
-          <span *ngIf="link.iconType === 'material-icon'" class="material-icons text-2xl">{{link.icon}}</span>
-          <span *ngIf="!link.icon" title="{{link.name}}" class="text-blue-600 underline">{{link.name}}</span>
-        </a>
-      </div>
     </div>
   </div>
 </div>
 
 <!-- project info -->
 <div class="flex flex-col gap-y-2 py-2">
-  <!-- tags -->
-  <div class="flex flex-wrap gap-x-2 gap-y-1 justify-center font-medium text-sm dark:text-blue-400">
-    <span *ngFor="let tag of projectData.tags" class="bg-purple-100 dark:bg-black text-color rounded-full px-1.5 py-0.5">{{tag}}</span>
-  </div>
-
   <!-- Technology stack -->
   <div class="flex flex-wrap items-center justify-center gap-2 my-1 flex-grow">
     <a *ngFor="let tech of projectData.techStack" href="{{tech.url}}" target="_blank" rel="noopener">
@@ -65,6 +45,27 @@
            class="max-w-6 w-6"
            width="24"
            height="24"/>
+    </a>
+  </div>
+
+  <!-- tags -->
+  <div class="flex flex-wrap gap-x-2 gap-y-1 justify-center font-medium text-sm dark:text-blue-400">
+    <span *ngFor="let tag of projectData.tags" class="bg-purple-100 dark:bg-black text-color rounded-full px-1.5 py-0.5">{{tag}}</span>
+  </div>
+
+  <!-- links -->
+  <div class="flex flex-wrap items-center justify-center gap-2">
+    <a *ngFor="let link of projectData.links" href="{{link.url}}" title="{{link.name}}" target="_blank" rel="noopener">
+      <img *ngIf="link.iconType === 'img'"
+           src="{{link.icon}}"
+           alt="{{link.name}}"
+           title="{{link.name}}"
+           class="max-w-6 w-6"
+           width="24"
+           height="24"/>
+      <i *ngIf="link.iconType === 'class'" class="{{link.icon}} text-2xl"></i>
+      <span *ngIf="link.iconType === 'material-icon'" class="material-icons text-2xl">{{link.icon}}</span>
+      <span *ngIf="!link.icon" title="{{link.name}}" class="text-blue-600 underline">{{link.name}}</span>
     </a>
   </div>
 

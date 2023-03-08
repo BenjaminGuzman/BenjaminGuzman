@@ -8,17 +8,18 @@
 
 ### I'm a software developer and lifelong learner
 
-I've worked as fullstack on various projects, but what I like the most is backend. 
-However, I'm also interested in cybersecurity, data science and bioinformatics.
+I love computer science 💻 and I'm really keen on 🐇 cybersecurity ⋀ mathematics.
 
-### I'm currently...
+I've worked on various projects as software developer and tester, but I like development much, much more.
+
+[//]: # (### I'm currently...)
 
 [//]: # (- 👊 working at [KOBD]&#40;https://github.com/KO-Boxing-Data&#41;. [Mau Montaño]&#40;https://github.com/MauSwoosh&#41; and I are the founders.)
-- 🦾 studying bionics.
+[//]: # (- 🦾 studying bionics.)
 
-- 💼 learning about business management.
+[//]: # (- 💼 learning about business management.)
 
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Java" width="20" height="20"/> learning Go
+[//]: # (- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Java" width="20" height="20"/> learning Go)
 
 ## Languages and Tools
 
@@ -86,3 +87,5 @@ However, I'm also interested in cybersecurity, data science and bioinformatics.
 <a href="https://www.linkedin.com/in/GuzmanBenjamin" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/linkedin.webp" alt="LinkedIn" title="LinkedIn" width="30">
 </a>
+
+[//]: # (Thanks for reading till the end, now you can marvel at my sorting algorithm. TODO insert link)

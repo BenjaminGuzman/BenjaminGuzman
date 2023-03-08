@@ -7,7 +7,8 @@
     </svg>
   </div>
   <app-project *ngFor="let project of renderedProjects"
-               [projectData]="project">
+               [projectData]="project"
+               #projectComponent>
   </app-project>
 </div>
 <div class="w-full h-18 py-4">
