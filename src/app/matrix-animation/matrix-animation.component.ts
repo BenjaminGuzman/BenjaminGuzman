@@ -37,7 +37,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   private readonly font: string = `${this.charWidth}px monospace`;
 
   /**
-   * Array of y coordinates (top to bottom) at which a text should be drawn in the next iteration
+   * Array of y coordinates (top to bottom) at which a text should be drawn in the next iteration/frame
    * {@link matrixAnimation}
    */
   private y: number[] = [];
@@ -45,7 +45,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   /**
    * Number of calls to {@link matrixAnimation}
    */
-  private i: number = 0;
+  private frame: number = 0;
 
   // @ts-ignore
   private intervalId: NodeJS.Timeout;
@@ -53,7 +53,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   /**
    * Number of iterations to be made to complete the animation
    */
-  private readonly nIterations: number = 60;
+  private readonly nFrames: number = 60;
 
   /**
    * Refresh rate of the canvas (in millis)
@@ -74,7 +74,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
   constructor(private changeDetectorRef: ChangeDetectorRef, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(platformId) && navigator.hardwareConcurrency >= 4) { // probably the computer can handle a greater refresh rate
       this.refreshRate /= 2;
-      this.nIterations *= 2;
+      this.nFrames *= 2;
     }
   }
 
@@ -98,7 +98,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     const nCols = Math.floor(this.width / this.charWidth);
 
     // start with characters in random positions
-    this.y = Array.from({length: nCols}, () => Math.random() * 3 * this.charWidth + this.charWidth);
+    this.y = Array.from({length: nCols}, () => this.charWidth - Math.random() * 3 * this.charWidth);
 
     // start the worker that will render stuff inside canvas
     if (typeof Worker !== 'undefined' && this.canvas.nativeElement.transferControlToOffscreen) {
@@ -111,7 +111,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
         charWidth: this.charWidth,
         canvas: this.offscreenCanvas,
         msg: this.msg,
-        nIterations: this.nIterations,
+        nFrames: this.nFrames,
         refreshRate: this.refreshRate
       }, [this.offscreenCanvas as OffscreenCanvas]);
 
@@ -121,7 +121,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
           this.onEnd.emit();
           this.onAnimationEnd();
         } else if (data.type === "ITERATION") {
-          this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nIterations - data.i) / this.nIterations}`);
+          this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nFrames - data.frame) / this.nFrames}`);
         }
       };
 
@@ -150,7 +150,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
 
   private matrixAnimation() {
     // dim the opacity of the canvas html element on each iteration
-    this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nIterations - this.i) / this.nIterations}`);
+    this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nFrames - this.frame) / this.nFrames}`);
 
     // Draw a semitransparent black rectangle on top of previous drawing
     // this will be drawn on top of the previous character, which will give the sense of the previous character being dimmed out
@@ -164,7 +164,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     // for each column put a random character at the end
     this.y.forEach((y, i) => {
       const rand = Math.random();
-      const char = String.fromCharCode(rand * 255);
+      const char = String.fromCharCode(rand * (127 - 33 + 1) + 33);
 
       const x = i * this.charWidth;
 
@@ -177,7 +177,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     });
 
     // add a small animation with the dots ...
-    if (this.i % 5 == 0) { // modulo 5 to execute the code not on every call 'cause that doesn't look good
+    if (this.frame % 5 == 0) { // modulo 5 to execute the code not on every call 'cause that doesn't look good
       if (this.msg.endsWith("..."))
         this.msg = this.msg.slice(0, this.msg.length - 3);
       else
@@ -212,9 +212,9 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
     // if (this.img)
     //   this.ctx.drawImage(this.img, this.width / 2 - 32, this.height / 2 - 64 - 40, 64, 64);
 
-    ++this.i;
+    ++this.frame;
 
-    if (this.i >= this.nIterations) {
+    if (this.frame >= this.nFrames) {
       clearInterval(this.intervalId);
       this.onEnd.emit();
       this.onAnimationEnd();

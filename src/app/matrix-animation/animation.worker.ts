@@ -7,10 +7,10 @@ let ctx: any;
 let font: string;
 let yArr: number[];
 let charWidth: number;
-let i: number = 0;
+let frame: number = 0;
 let msg: string;
 let msgLenPx: number;
-let nIterations: number;
+let nFrames: number;
 let img: ImageBitmap | null = null;
 
 const benjaminGuzman: string = "Benjamín Guzmán";
@@ -32,7 +32,7 @@ function draw() {
   // for each column put a random character at the end
   yArr.forEach((y, i) => {
     const rand = Math.random();
-    const char = String.fromCharCode(rand * 255);
+    const char = String.fromCharCode(rand * (127 - 33 + 1) + 33);
 
     const x = i * charWidth;
 
@@ -45,7 +45,7 @@ function draw() {
   });
 
   // add a small animation with the dots ...
-  if (i % 5 == 0) { // modulo 5 to execute the code not on every call 'cause that doesn't look good
+  if (frame % 5 == 0) { // modulo 5 to execute the code not on every call 'cause that doesn't look good
     if (msg.endsWith("..."))
       msg = msg.slice(0, msg.length - 3);
     else
@@ -84,15 +84,16 @@ function draw() {
     // ctx.fillText(benjaminGuzman, canvas.width / 2 - benjaminGuzmanLenPx / 2, canvas.height / 2 - 40);
   }
 
-  ++i;
+  ++frame;
 
-  if (i >= nIterations) {
+  console.log(frame, nFrames);
+  if (frame < nFrames) {
+    // requestAnimationFrame(draw);
+    self.postMessage({type: "ITERATION", frame: frame});
+  } else {
     clearInterval(intervalId);
     img?.close();
     self.postMessage({type: "END"});
-  } else {
-    // requestAnimationFrame(draw);
-    self.postMessage({type: "ITERATION", i: i});
   }
 }
 
@@ -103,7 +104,7 @@ addEventListener("message", ({ data }) => {
     charWidth = data.charWidth;
     canvas = data.canvas;
     msg = data.msg;
-    nIterations = data.nIterations;
+    nFrames = data.nFrames;
 
     ctx = canvas.getContext("2d");
     ctx.font = font;
