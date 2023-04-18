@@ -10,7 +10,9 @@
 
 I love computer science 💻 and I'm really keen on 🐇 cybersecurity ⋀ mathematics.
 
-I've worked on various projects as software developer and tester, but I like development much, much more.
+I've worked on various projects as software developer and tester, but I like development much, much more!
+
+I'm more of a **tool-agnostic problem solver** than a framework implementer or coder.
 
 [//]: # (### I'm currently...)
 
