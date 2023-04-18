@@ -8,7 +8,7 @@
    version="1.1"
    id="svg5"
    sodipodi:docname="banner.svg"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -26,14 +26,16 @@
      showgrid="false"
      showguides="false"
      inkscape:zoom="0.5"
-     inkscape:cx="526"
+     inkscape:cx="431"
      inkscape:cy="32"
-     inkscape:window-width="1366"
-     inkscape:window-height="739"
+     inkscape:window-width="1280"
+     inkscape:window-height="772"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050" />
   <defs
      id="defs2">
     <linearGradient
@@ -260,9 +262,9 @@
        height="80.943611"
        x="0.14055972"
        y="0.13756958"
-       inkscape:export-filename="/home/guzman/projects/BenjaminGuzman/src/assets/banner-alt.png"
-       inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96" />
+       inkscape:export-filename="banner-alt.png"
+       inkscape:export-xdpi="140"
+       inkscape:export-ydpi="140" />
     <image
        width="146.4127"
        height="80.943611"
@@ -283,7 +285,7 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;line-height:1.25;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#fffff9;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="110.73021"
+       x="111.78854"
        y="43.374264"
        id="text2470-7"
        inkscape:export-filename="/home/guzman/projects/BenjaminGuzman/src/assets/banner-alt.png"
@@ -292,12 +294,12 @@
          sodipodi:role="line"
          id="tspan2468-7"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.81944px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#fffff9;fill-opacity:1;stroke-width:0.264583"
-         x="110.73021"
+         x="111.78854"
          y="43.374264">Software Developer</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.81944px;line-height:1.25;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#fffff9;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="14.469038"
+       x="7.5898767"
        y="43.338993"
        id="text2470-8"
        inkscape:export-filename="/home/guzman/projects/BenjaminGuzman/src/assets/banner-alt.png"
@@ -306,7 +308,7 @@
          sodipodi:role="line"
          id="tspan2468-9"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.81944px;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#fffff9;fill-opacity:1;stroke-width:0.264583"
-         x="14.469038"
+         x="7.5898767"
          y="43.338993">Benjamín Guzmán</tspan></text>
     <g
        id="g16784"
