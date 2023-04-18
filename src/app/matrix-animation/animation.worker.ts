@@ -86,10 +86,9 @@ function draw() {
 
   ++frame;
 
-  console.log(frame, nFrames);
   if (frame < nFrames) {
     // requestAnimationFrame(draw);
-    self.postMessage({type: "ITERATION", frame: frame});
+    self.postMessage({type: "FRAME", frame: frame});
   } else {
     clearInterval(intervalId);
     img?.close();

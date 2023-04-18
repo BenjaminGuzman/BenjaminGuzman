@@ -120,7 +120,7 @@ export class MatrixAnimationComponent implements OnInit, AfterViewInit, OnDestro
           this.canvasWorker?.terminate();
           this.onEnd.emit();
           this.onAnimationEnd();
-        } else if (data.type === "ITERATION") {
+        } else if (data.type === "FRAME") {
           this.canvas.nativeElement.setAttribute("style", `opacity: ${(this.nFrames - data.frame) / this.nFrames}`);
         }
       };
