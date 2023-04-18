@@ -26,21 +26,25 @@
   <nav class="h-full md:mt-auto flex flex-col md:flex-row md:gap-6 justify-around md:justify-center items-center text-color md:text-lg">
     <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
        [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('about')}"
+       routerLink="./"
        (click)="navigateTo('about')">
       About
     </a>
     <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
        [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('portfolio')}"
+       routerLink="./"
        (click)="navigateTo('portfolio')">
       Portfolio
     </a>
     <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
        [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('skills')}"
+       routerLink="./"
        (click)="navigateTo('skills')">
       Skills
     </a>
     <a class="transition-transform transition-colors cursor-pointer link before:bg-gray-700 dark:before:bg-gray-300"
        [ngClass]="{'scale-110 text-green-600 dark:text-green-400 link-active': isFragmentActive('footer')}"
+       routerLink="./"
        (click)="navigateTo('footer')">
       Contact
     </a>
