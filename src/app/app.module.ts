@@ -18,6 +18,7 @@ import {SkillComponent} from './skills/skill/skill.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AboutExtraComponent} from './about-extra/about-extra.component';
 import {MatrixAnimationComponent} from './matrix-animation/matrix-animation.component';
+import {NgOptimizedImage} from "@angular/common";
 
 SwiperCore.use([Navigation, Lazy]);
 
@@ -35,14 +36,15 @@ SwiperCore.use([Navigation, Lazy]);
     AboutExtraComponent,
     MatrixAnimationComponent
   ],
-  imports: [
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    SwiperModule,
-    HttpClientModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule.withServerTransition({appId: 'serverApp'}),
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        SwiperModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 <footer id="footer" class="flex justify-around flex-wrap gap-12 text-color bg-gray-100 dark:bg-[#111] w-full py-10 px-6 md:px-10 scroll-m-4 relative">
   <div id="footer-overlay" class="absolute opacity-10 bg-fixed bg-center bg-cover w-full h-full top-0 pointer-events-none"></div>
   <div class="flex flex-col gap-2 items-center">
-    <img src="/assets/profile.webp" alt="Benjamín Guzmán" class="rounded-full w-24 md:w-36 border-gray-400 border-2" width="144" height="144">
+    <img ngSrc="/assets/profile.webp" alt="Benjamín Guzmán" class="rounded-full w-24 md:w-36 border-gray-400 border-2" width="144" height="144">
     <p class="text-lg md:text-xl">Benjamín Guzmán</p>
   </div>
 
@@ -11,8 +11,8 @@
 
     <p class="text-lg md:text-xl mt-6 font-medium text-center">Email</p>
     <p class="font-medium">bg@benjaminguzman.dev</p>
-    <a href="/assets/pk.pub.asc" title="GPG Key" download="BenjaminGuzman.pub.asc">
-      <img src="/assets/img/tech/gnupg.webp" alt="GPG Key" class="w-8 hover:scale-125 transition-transform">
+    <a href="/src/assets/gpg.pub.asc" title="GPG Key" download="BenjaminGuzman.pub.asc">
+      <img ngSrc="/assets/img/tech/gnupg.webp" alt="GPG Key" class="w-8 hover:scale-125 transition-transform" height="64" width="64">
     </a>
   </div>
 
@@ -37,7 +37,7 @@
       <div class="flex flex-col form-field">
         <label for="subject" class="text-color-dim">Subject<sup>*</sup></label>
         <div class="input-form-wrapper">
-          <input type="text" id="subject" [formControl]="formControls.subject" name="subject" class="input-form" required placeholder="I'd like us to work together">
+          <input type="text" id="subject" [formControl]="formControls.subject" name="subject" class="input-form" required placeholder="I'd love to work together">
         </div>
         <p class="text-xs sm:text-sm font-medium text-red-600 py-1 px-0.5" *ngIf="formControls.subject.invalid">{{getErrorMsg(formControls.subject, 'subject')}}</p>
       </div>
