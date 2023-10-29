@@ -8,7 +8,7 @@
 
 ### I'm a software developer and lifelong learner
 
-I love computer science 💻 and I'm really keen on 🐇 cybersecurity ⋀ mathematics.
+I love computer science 💻 and I'm really keen on 🐇 cybersec, 🧬 bioinformatics ⋀ mathematics.
 
 I've worked on various projects as software developer and tester, but I like development much, much more!
 
