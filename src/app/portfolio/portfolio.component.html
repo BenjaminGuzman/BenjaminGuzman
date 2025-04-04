@@ -6,6 +6,10 @@
       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
     </svg>
   </div>
+  <div *ngIf="!isLoading && projects.length === 0" class="w-full flex flex-col justify-center col-span-12 text-color">
+    <p class="justify-center w-full text-center sans-serif text-sm mb-2">I connected a database here, but I used a free-tier product, so it got eventually deleted and I haven't had time to restore it 😝</p>
+    <p class="justify-center w-full text-center sans-serif">If you're interested, see my <a href="https://github.com/BenjaminGuzman" target="_blank" class="cursor-pointer underline">GitHub</a>, or better yet... contact me directly using the form at the bottom 👇</p>
+  </div>
   <app-project *ngFor="let project of renderedProjects"
                [projectData]="project"
                #projectComponent>

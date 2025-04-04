@@ -52,8 +52,9 @@ export class SupabaseService {
 
       if (error || data === null) {
         // @ts-ignore
-        AppComponent.handleNetworkError(error);
-        throw error;
+        //AppComponent.handleNetworkError(error);
+        //throw error;
+        data = [];
       }
 
       projects = data;
