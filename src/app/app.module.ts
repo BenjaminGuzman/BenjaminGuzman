@@ -19,6 +19,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AboutExtraComponent} from './about-extra/about-extra.component';
 import {MatrixAnimationComponent} from './matrix-animation/matrix-animation.component';
 import {NgOptimizedImage} from "@angular/common";
+import {PapersComponent} from './papers/papers.component';
+import {PaperComponent} from './papers/paper/paper.component';
 
 SwiperCore.use([Navigation, Lazy]);
 
@@ -33,6 +35,8 @@ SwiperCore.use([Navigation, Lazy]);
     DataBackgroundDirective,
     SkillsComponent,
     SkillComponent,
+    PapersComponent,
+    PaperComponent,
     AboutExtraComponent,
     MatrixAnimationComponent
   ],

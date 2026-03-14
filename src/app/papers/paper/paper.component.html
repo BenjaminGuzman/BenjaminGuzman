@@ -1,0 +1,41 @@
+<!-- Image slideshow -->
+<div class="relative w-full h-64 rounded-t paper">
+  <swiper class="w-full h-full"
+          [navigation]="paperData.imgUrls.length > 1"
+          [preloadImages]="false"
+          [lazy]="{checkInView: false, loadPrevNext: true}">
+    <ng-template swiperSlide *ngFor="let imgUrl of paperData.imgUrls">
+      <div class="swiper-lazy w-full h-full bg-cover bg-center rounded-t" dataBackground="{{imgUrl}}">
+        <div class="swiper-lazy-preloader swiper-lazy-preloader-green"></div>
+      </div>
+    </ng-template>
+  </swiper>
+</div>
+
+<!-- paper info -->
+<div class="flex flex-col gap-y-2 py-2">
+  <!-- Title -->
+  <h3 class="text-xl font-semibold text-center text-color px-2">{{paperData.title}}</h3>
+
+  <!-- Journal & Date -->
+  <p class="text-sm text-center font-medium text-color opacity-90">{{paperData.journal}}</p>
+
+  <!-- Description -->
+  <p class="text-color text-center text-sm sans-serif px-2">{{paperData.description}}</p>
+
+  <!-- Links -->
+  <div class="flex flex-wrap items-center justify-center gap-4 mt-2">
+    <a *ngFor="let link of paperData.links" [href]="link.url" [title]="link.name" target="_blank" rel="noopener">
+      <img *ngIf="link.iconType === 'img'"
+           ngSrc="{{link.icon}}"
+           [alt]="link.name"
+           [title]="link.name"
+           class="max-w-6 w-6 hover:scale-110 transition-transform"
+           width="24"
+           height="24"/>
+      <i *ngIf="link.iconType === 'class'" class="{{link.icon}} text-2xl hover:scale-110 transition-transform"></i>
+      <span *ngIf="link.iconType === 'material-icon'" class="material-icons text-2xl hover:scale-110 transition-transform">{{link.icon}}</span>
+      <span *ngIf="!link.icon" [title]="link.name" class="text-blue-600 underline hover:scale-110 transition-transform">{{link.name}}</span>
+    </a>
+  </div>
+</div>

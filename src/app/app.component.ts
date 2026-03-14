@@ -30,6 +30,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('portfolio', {read: ElementRef})
   public portfolioEl: ElementRef = null as unknown as ElementRef;
 
+  @ViewChild('papers', {read: ElementRef})
+  public papersEl: ElementRef = null as unknown as ElementRef;
+
   @ViewChild('skills', {read: ElementRef})
   public skillsEl: ElementRef = null as unknown as ElementRef;
 
@@ -66,6 +69,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.sections = [
       {elem: this.aboutEl, fragment: FragmentId.about},
       {elem: this.portfolioEl, fragment: FragmentId.portfolio},
+      {elem: this.papersEl, fragment: FragmentId.papers},
       {elem: this.skillsEl, fragment: FragmentId.skills},
       {elem: this.footerEl, fragment: FragmentId.footer},
     ].reverse(); // this way we check the last element in the page first

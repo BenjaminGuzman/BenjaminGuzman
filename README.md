@@ -3,14 +3,14 @@
 </p>
 <h2 align="center">👋 I'm Benjamín Guzmán</h2>
 <p align="center"><a href="https://benjaminguzman.dev">benjaminguzman.dev</a></p>
-<p align="center">bg@benjaminguzman.dev</p>
+<p align="center">bg@bguzman.dev</p>
 <p align="center"><a href="https://medium.com/@GuzmanBenjamin">Blog</a></p>
 
-### I'm a software developer and lifelong learner
+### I'm an embedded software engineer and lifelong learner
 
 I like computer science 💻 but I'm also really keen on psychology 🧠
 
-I've worked on various projects as software developer for quite some time
+I've worked on various projects as software engineer for quite some time
 
 I'm more of a **tool-agnostic problem solver** than a framework implementer or coder    
 
@@ -26,31 +26,30 @@ I'm more of a **tool-agnostic problem solver** than a framework implementer or c
 ## Languages and Tools
 
 <p align="left">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" title="Java" alt="Java" width="30" height="30"/> 
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" title="NestJS" alt="NestJS" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" title="git" alt="git" width="30" height="30"/> 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" title="GraphQL" alt="GraphQL" width="30" height="30"/> 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" title="TypeScript" alt="TypeScript" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" title="C++" alt="C++" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" title="C" alt="C" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" title="Express" alt="Express" width="30" height="30"/>
 <img src="src/assets/img/tech/fedora.webp" title="Fedora" alt="Fedora" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gentoo/gentoo-plain.svg" title="Gentoo" alt="Gentoo" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/centos/centos-original.svg" title="CentOS" alt="CentOS" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/debian/debian-original.svg" title="Debian" alt="Debian" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" title="NodeJS" alt="NodeJS" width="30" height="30"/> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" title="PostgreSQL" alt="PostgreSQL" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" title="Java" alt="Java" width="30" height="30"/> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" title="NestJS" alt="NestJS" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" title="git" alt="git" width="30" height="30"/> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" title="GraphQL" alt="GraphQL" width="30" height="30"/> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="30" height="30"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" title="TypeScript" alt="TypeScript" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" title="MongoDB" alt="MongoDB" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" title="MySQL" alt="MySQL" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" title="Redis" alt="Redis" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" title="NodeJS" alt="NodeJS" width="30" height="30"/> 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" title="PostgreSQL" alt="PostgreSQL" width="30" height="30"/> 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grpc/grpc-original.svg"  title="gRPC" alt="gRPC" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" title="Python" alt="Python" width="30" height="30"/>
 <img src="src/assets/img/tech/angular.webp" title="Angular" alt="Angular" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" title="Docker" alt="Docker" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" title="Nginx" alt="Nginx" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" title="HTML" alt="HTML" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" title="CSS3" alt="CSS3" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" title="C" alt="C" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" title="C++" alt="C++" width="30" height="30"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" title="TailwindCSS" alt="TailwindCSS" width="30" height="30"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" title="Express" alt="Express" width="30" height="30"/>
 </p>
 <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="GNU/Linux" width="40" height="40"/>) -->
 
@@ -68,6 +67,21 @@ I'm more of a **tool-agnostic problem solver** than a framework implementer or c
   <img src="src/assets/img/tech/github-light.webp" alt="GitHub" title="GitHub" width="30">
 </a>
 
+<!-- Medium -->
+<a href="https://medium.com/@GuzmanBenjamin" target="_blank" rel="noopener">
+  <img src="src/assets/img/tech/medium.webp" alt="Medium" title="Medium" width="30">
+</a>
+
+<!-- LinkedIn -->
+<a href="https://www.linkedin.com/in/GuzmanBenjamin" target="_blank" rel="noopener">
+  <img src="src/assets/img/tech/linkedin.webp" alt="LinkedIn" title="LinkedIn" width="30">
+</a>
+
+<!-- ORCID -->
+<a href="https://orcid.org/0009-0001-0879-9676" target="_blank" rel="noopener">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/ORCID_iD.svg" alt="ORCID" title="ORCID" width="30">
+</a>
+
 <a href="https://stackexchange.com/users/10857896/benjam%c3%adn-guzm%c3%a1n" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/se.svg" alt="Stack Exchange" title="Stack Exchange" width="30">
 </a>
@@ -77,19 +91,14 @@ I'm more of a **tool-agnostic problem solver** than a framework implementer or c
   <img src="src/assets/img/tech/hackerrank.webp" alt="HackerRank" title="HackerRank" width="30">
 </a>
 
+<!-- Leetcode -->
+<a href="https://leetcode.com/benjaminguzman/" target="_blank" rel="noopener">
+  <img src="src/assets/img/tech/leetcode.webp" alt="Leetcode" title="Leetcode" class="w-8 hover:scale-125 transition-transform" width="32" height="32">
+</a>
+
 <!-- Platzi -->
 <a href="https://platzi.com/p/BenjaminGuzman" target="_blank" rel="noopener">
   <img src="src/assets/img/tech/platzi.webp" alt="Platzi" title="Platzi" width="30">
-</a>
-
-<!-- Medium -->
-<a href="https://medium.com/@GuzmanBenjamin" target="_blank" rel="noopener">
-  <img src="src/assets/img/tech/medium.webp" alt="Medium" title="Medium" width="30">
-</a>
-
-<!-- LinkedIn -->
-<a href="https://www.linkedin.com/in/GuzmanBenjamin" target="_blank" rel="noopener">
-  <img src="src/assets/img/tech/linkedin.webp" alt="LinkedIn" title="LinkedIn" width="30">
 </a>
 
 [//]: # (Thanks for reading till the end, now you can marvel at my sorting algorithm. TODO insert link)
