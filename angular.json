@@ -31,7 +31,7 @@
               "src/assets"
             ],
             "styles": [
-	            "src/tailwind.css",
+              "src/tailwind.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -183,6 +183,41 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "benjaminguzman:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "benjaminguzman:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "benjaminguzman:serve:production"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "benjaminguzman:serve:production"
+            }
+          }
         }
       }
     }

@@ -11,7 +11,10 @@
     "dev:ssr": "ng run benjaminguzman:serve-ssr",
     "serve:ssr": "node dist/benjaminguzman/server/main.js",
     "build:ssr": "ng build && ng run benjaminguzman:server",
-    "prerender": "npm run tailwind && ng run benjaminguzman:prerender && cp robots.txt dist/benjaminguzman/browser"
+    "prerender": "npm run tailwind && ng run benjaminguzman:prerender && cp robots.txt dist/benjaminguzman/browser",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "e2e": "npm run tailwind && start-server-and-test \"ng serve\" http-get://localhost:4200 cy:run"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^14.2.12",
     "@angular/platform-server": "^14.2.12",
     "@angular/router": "^14.2.12",
+    "@cypress/schematic": "^1.0.0",
     "@nguniversal/express-engine": "^14.2.3",
     "@supabase/supabase-js": "^1.35.7",
     "express": "^4.15.2",
@@ -42,6 +46,7 @@
     "@types/node": "^16.11.22",
     "@types/offscreencanvas": "^2019.6.4",
     "autoprefixer": "^10.4.0",
+    "cypress": "latest",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -49,6 +54,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "postcss": "^8.4.5",
+    "start-server-and-test": "^3.0.11",
     "tailwindcss": "^3.0.5",
     "typescript": "~4.8.4"
   }
