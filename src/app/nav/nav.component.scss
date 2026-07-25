@@ -16,7 +16,7 @@
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   #menu-sm {
     // override the styles angular puts in the element when an state animation is set
     display: none !important;

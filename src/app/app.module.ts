@@ -24,6 +24,8 @@ import {PaperComponent} from './papers/paper/paper.component';
 
 SwiperCore.use([Navigation, Lazy]);
 
+import {ExperienceComponent} from './experience/experience.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ SwiperCore.use([Navigation, Lazy]);
     PapersComponent,
     PaperComponent,
     AboutExtraComponent,
-    MatrixAnimationComponent
+    MatrixAnimationComponent,
+    ExperienceComponent
   ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),

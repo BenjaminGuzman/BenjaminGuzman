@@ -24,10 +24,11 @@ export class NavService {
 
 export enum FragmentId {
   about = "about",
+  experience = "experience",
   portfolio = "portfolio",
   papers = "papers",
   skills = "skills",
   footer = "footer"
 }
 
-export type FragmentIdT = "about" | "portfolio" | "skills" | "footer" | "papers";
+export type FragmentIdT = "about" | "experience" | "portfolio" | "skills" | "footer" | "papers";

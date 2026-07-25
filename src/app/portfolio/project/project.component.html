@@ -1,6 +1,6 @@
 <!-- Image slideshow -->
-<div class="relative w-full h-64 rounded-t project">
-  <swiper class="w-full h-full"
+<div class="relative w-full h-64 rounded-t project overflow-hidden">
+  <swiper class="w-full h-full overflow-hidden"
           [navigation]="projectData.imgUrls.length > 1"
           [preloadImages]="false"
           [lazy]="{checkInView: false, loadPrevNext: true}">
@@ -26,8 +26,8 @@
          (@descAnimation.done)="descriptionAnimationDone($event)"
          #descriptionPanel>
       <span class="text-xs text-center text-opacity-70">{{projectData.years}}</span>
-      <p class="sans-serif text-center font-medium">Skills practiced</p>
-      <p class="sans-serif text-sm">{{projectData.skills}}</p>
+<!--      <p class="sans-serif text-center font-medium">Skills practiced</p>-->
+<!--      <p class="sans-serif text-sm">{{projectData.skills}}</p>-->
     </div>
   </div>
 </div>
@@ -36,7 +36,7 @@
 <div class="flex flex-col gap-y-2 py-2">
   <!-- Technology stack -->
   <div class="flex flex-wrap items-center justify-center gap-2 my-1 flex-grow">
-    <a *ngFor="let tech of projectData.techStack" href="{{tech.url}}" target="_blank" rel="noopener">
+    <a *ngFor="let tech of projectData.techStack" [attr.href]="tech.url || null" [attr.target]="tech.url ? '_blank' : null" [attr.rel]="tech.url ? 'noopener' : null">
       <i *ngIf="tech.iconType === 'class'" class="{{tech.icon}} text-2xl"></i>
       <img *ngIf="tech.iconType === 'img'"
            src="{{tech.icon}}"
@@ -50,7 +50,7 @@
 
   <!-- tags -->
   <div class="flex flex-wrap gap-x-2 gap-y-1 justify-center font-medium text-sm dark:text-blue-400">
-    <span *ngFor="let tag of projectData.tags" class="bg-purple-100 dark:bg-black text-color rounded-full px-1.5 py-0.5">{{tag}}</span>
+    <span *ngFor="let tag of projectData.tags" class="bg-purple-100 dark:bg-gray-700 text-color rounded-full px-1.5 py-0.5">{{tag}}</span>
   </div>
 
   <!-- links -->
