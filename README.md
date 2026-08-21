@@ -8,9 +8,9 @@
 
 ### I'm an embedded software engineer and lifelong learner
 
-I like computer science 💻 but I'm also really keen on psychology 🧠
+Proficient in C/C++, cross-compilation, system internals and Linux. 
 
-I've worked on various projects as software engineer for quite some time
+Passionate about embedded systems, Linux and cybersecurity to build highly reliable software.
 
 I'm more of a **tool-agnostic problem solver** than a framework implementer or coder    
 
@@ -58,8 +58,9 @@ I'm more of a **tool-agnostic problem solver** than a framework implementer or c
 [![GH stats](https://github-readme-stats.vercel.app/api?username=BenjaminGuzman&show_icons=true&theme=nightowl&hide_border=true&bg_color=30%2C000000%2C362060)](https://github.com/BenjaminGuzman)
 -->
 
+<!--
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=BenjaminGuzman&layout=compact&theme=nightowl&hide_border=true&bg_color=30%2C000000%2C362060&langs_count=6&hide=Jupyter%20Notebook%2Chtml)](https://github.com/BenjaminGuzman)
-
+-->
 
 ## Social media
 
